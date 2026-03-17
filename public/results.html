@@ -1,5 +1,12 @@
 <!DOCTYPE html>
+<link rel="stylesheet" href="css/product.css">   
 <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+</head>
+<body>
 
 <div id="sort">  <!-- Sorting options in a simple dropdown -->
     <select id="sort-by">
@@ -20,11 +27,23 @@
 
         <div class="product">
             <img src="/public/images/demo_book.avif" alt="Product Image" class="product-image">
-            <h2 class="product-title">Product Title</h2>
-            <p class="product-price">$19.99</p>
-            <p class="product-rating">4.5 stars</p>
+            <div class="product-details">
+                <div class="product-row">
+                    <span class="label">Price:</span>
+                    <span class="value">$19.99</span>
+                </div>
+                <div class="product-row">
+                    <span class="label">Author:</span>
+                    <span class="value">John Doe</span>
+                </div>
+                <div class="product-row">
+                    <span class="label">Review:</span>
+                    <span class="value">4.5 stars</span>
+                </div>
+            </div>
             <button class="add-to-cart">Add to Cart</button>
         </div>
+        
 
 
 
@@ -34,6 +53,7 @@
 
 
 
+</body>
 </html>
 
 
