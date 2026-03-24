@@ -1,22 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<?php include 'includes/header.php'; ?>
 
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <?php include 'includes/header.php'; ?>
-    <div class="header-box">
-        <h1>ONLINE BOOKSTORE</h1>
+<!-- <link rel="stylesheet" href="style.css"> -->
+
+    <script src="/WWW/js/script.js"></script>
+    <!-- Recommending best series to read on front page -->
+    <div class="best-series">
+        <h2>BEST SERIES</h2>
+
+        <div class="series-grid">
+            <div class="series-card">
+                <img src="IMAGE">
+                <h3>SERIES ONE</h3>
+            </div>
+
+            <div class="series-card">
+                <img src="IMAGE">
+                <h3>SERIES TWO</h3>
+            </div>
+
+            <div class="series-card">
+                <img src="IMAGE">
+                <h3>SERIES THREE</h3>
+            </div>
+        </div>
     </div>
-
-    <p>This website will be about an online bookstore.</p>
-
-    <script src="script.js"></script>
-
+    <!-- About Us Section -->
+    <div class="about">
+        <h2>About Us</h2>
+        <p>We are an online bookstore dedicated to bringing
+            you the best book series, from fantast to mystery
+            and everything in between.
+        </p>
+    </div>
+    <!-- Find Us on the google maps -->
     <div class="map-container">
         <h2>Find Us</h2>
         <iframe 
@@ -28,5 +44,5 @@
             loading="lazy">
         </iframe>
     </div>
-</body>
-</html>
+
+<?php include 'includes/footer.php'; ?>
