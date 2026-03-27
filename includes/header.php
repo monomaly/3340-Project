@@ -1,3 +1,9 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -29,13 +35,27 @@
                     <a href="/WWW/WikiPages/booktomovie.php">Book-to-Movie Adaptations</a>
                 </div>
             </div>
+            <a href="/WWW/cart.php">Cart</a>
             <div class="dropdown">
-                <a href="/WWW/cart.php">Cart</a>
-                <button class="dropbtn">Account</button>
+                <button class="dropbtn">
+                    <?php 
+                    if (isset($_SESSION['user'])) {
+                        echo $_SESSION['user']['name']; 
+                    } else {
+                        echo "Account";
+                    }
+                    ?>
+                </button>
+
                 <div class="dropdown-content">
-                    <a href="/WWW/***">Login</a>
-                    <a href="/WWW/***">Sign-Up</a>
-                    <a href="/WWW/***">Login</a>
+                    <?php if (isset($_SESSION['user'])): ?>
+                        <a href="/WWW/account.php">Profile</a>
+                        <a href="/WWW/orders.php">Orders</a>
+                        <a href="/WWW/logout.php">Logout</a>
+                    <?php else: ?>
+                        <a href="/WWW/login.php">Login</a>
+                        <a href="/WWW/signup.php">Sign Up</a>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
