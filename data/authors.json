@@ -1,0 +1,22 @@
+[
+  {
+    "title": "J.K. Rowling",
+    "image": "images/JKR.jpg"
+  },
+  {
+    "title": "J.R.R. Tolkien",
+    "image": "images/JRRT.jpg"
+  },
+  {
+    "title": "Suzanne Collins",
+    "image": "images/SC.jpg"
+  },
+  {
+    "title": "Stephen King",
+    "image": "images/SK.jpg"
+  },
+  {
+    "title": "Agatha Christie",
+    "image": "images/AC.jpg"
+  }
+]
