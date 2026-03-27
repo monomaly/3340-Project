@@ -5,7 +5,7 @@
 
     <!-- HP -->
     <div class="wiki-section">
-        <img src="../images/hp.jpg">
+        <img src="../images/HarPot.jpg">
         <div class="wiki-info">
             <h2>Harry Potter Series</h2>
             <p>
@@ -23,7 +23,7 @@
 
     <!-- HUNGER GAMES -->
     <div class="wiki-section">
-        <img src="../images/hunger.jpg">
+        <img src="../images/HunGam.jpg">
         <div class="wiki-info">
             <h2>The Hunger Games</h2>
             <p>
@@ -40,7 +40,7 @@
 
     <!-- DUNE -->
     <div class="wiki-section">
-        <img src="../images/dune.jpg">
+        <img src="../images/Dune.jpg">
         <div class="wiki-info">
             <h2>Dune</h2>
             <p>
@@ -56,7 +56,7 @@
 
     <!-- BOOK THIEF -->
     <div class="wiki-section">
-        <img src="../images/bookthief.jpg">
+        <img src="../images/BookThief.jpg">
         <div class="wiki-info">
             <h2>The Book Thief</h2>
             <p>
@@ -72,7 +72,7 @@
 
     <!-- ALCHEMIST -->
     <div class="wiki-section">
-        <img src="../images/alchemist.jpg">
+        <img src="../images/Alch.jpg">
         <div class="wiki-info">
             <h2>The Alchemist</h2>
             <p>

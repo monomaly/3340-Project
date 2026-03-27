@@ -1,11 +1,11 @@
 <?php include '../includes/header.php'; ?>
 
+
 <div class="wiki-page">
     <h1>Reading Guide</h1>
 
     <!-- CHOOSING -->
     <div class="wiki-section">
-        <img src="../images/choose.jpg">
         <div class="wiki-info">
             <h2>How to Choose a Book</h2>
             <p>
@@ -24,7 +24,6 @@
 
     <!-- HABIT -->
     <div class="wiki-section">
-        <img src="../images/habit.jpg">
         <div class="wiki-info">
             <h2>Building a Reading Habit</h2>
             <p>
@@ -43,7 +42,6 @@
 
     <!-- BENEFITS -->
     <div class="wiki-section">
-        <img src="../images/benefits.jpg">
         <div class="wiki-info">
             <h2>Benefits of Reading</h2>
             <p>

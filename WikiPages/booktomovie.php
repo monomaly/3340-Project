@@ -4,7 +4,7 @@
     <h1>Book-to-Movie Adaptations</h1>
 
     <div class="wiki-section">
-        <img src="../images/hp-movie.jpg">
+        <img src="../images/HP.jpg">
         <div class="wiki-info">
             <h2>Harry Potter</h2>
             <p>
@@ -19,7 +19,7 @@
     </div>
 
     <div class="wiki-section">
-        <img src="../images/lotr.jpg">
+        <img src="../images/LofR.jpg">
         <div class="wiki-info">
             <h2>The Lord of the Rings</h2>
             <p>
@@ -33,7 +33,7 @@
     </div>
 
     <div class="wiki-section">
-        <img src="../images/hunger-movie.jpg">
+        <img src="../images/HG.jpg">
         <div class="wiki-info">
             <h2>The Hunger Games</h2>
             <p>
@@ -47,7 +47,7 @@
     </div>
 
     <div class="wiki-section">
-        <img src="../images/dune-movie.jpg">
+        <img src="../images/D.jpg">
         <div class="wiki-info">
             <h2>Dune</h2>
             <p>
@@ -60,7 +60,7 @@
     </div>
 
     <div class="wiki-section">
-        <img src="../images/narnia.jpg">
+        <img src="../images/N.jpg">
         <div class="wiki-info">
             <h2>The Chronicles of Narnia</h2>
             <p>

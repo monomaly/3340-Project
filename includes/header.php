@@ -29,9 +29,15 @@
                     <a href="/WWW/WikiPages/booktomovie.php">Book-to-Movie Adaptations</a>
                 </div>
             </div>
-            <a href="/WWW/books.php">Books</a>
-            <a href="/WWW/cart.php">Cart</a>
-            <a href="/WWW/login.php">Login</a>
+            <div class="dropdown">
+                <a href="/WWW/cart.php">Cart</a>
+                <button class="dropbtn">Account</button>
+                <div class="dropdown-content">
+                    <a href="/WWW/***">Login</a>
+                    <a href="/WWW/***">Sign-Up</a>
+                    <a href="/WWW/***">Login</a>
+                </div>
+            </div>
         </div>
     </div>
 

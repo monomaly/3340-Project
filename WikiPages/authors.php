@@ -1,12 +1,16 @@
 <?php include '../includes/header.php'; ?>
 
+<?php
+$data = json_decode(file_get_contents('../data/authors.json'), true);
+?>
+
 <div class="authors-page">
     <h1>Famous Authors</h1>
     <p>Explore the lives, careers, and achievements of some of the most influential authors.</p>
 
     <!-- J.K. ROWLING -->
     <div class="author-section">
-        <img src="../images/jkrowling.jpg" alt="J.K. Rowling">
+        <img src="../images/JKR.jpg" alt="J.K. Rowling">
 
         <div class="author-info">
             <h2>J.K. Rowling</h2>
@@ -34,7 +38,7 @@
 
     <!-- TOLKIEN -->
     <div class="author-section">
-        <img src="../images/tolkien.jpg" alt="J.R.R. Tolkien">
+        <img src="../images/JRRT.jpg" alt="J.R.R. Tolkien">
 
         <div class="author-info">
             <h2>J.R.R. Tolkien</h2>
@@ -62,7 +66,7 @@
 
     <!-- SUZANNE COLLINS -->
     <div class="author-section">
-        <img src="../images/suzanne.jpg" alt="Suzanne Collins">
+        <img src="../images/SC.jpg" alt="Suzanne Collins">
 
         <div class="author-info">
             <h2>Suzanne Collins</h2>
@@ -88,7 +92,7 @@
 
     <!-- STEPHEN KING -->
     <div class="author-section">
-        <img src="../images/stephenking.jpg" alt="Stephen King">
+        <img src="../images/SK.jpg" alt="Stephen King">
 
         <div class="author-info">
             <h2>Stephen King</h2>
@@ -114,7 +118,7 @@
 
     <!-- AGATHA CHRISTIE -->
     <div class="author-section">
-        <img src="../images/agatha.jpg" alt="Agatha Christie">
+        <img src="../images/AC.jpg" alt="Agatha Christie">
 
         <div class="author-info">
             <h2>Agatha Christie</h2>
