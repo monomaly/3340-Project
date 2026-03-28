@@ -17,7 +17,7 @@ if (session_status() === PHP_SESSION_NONE) {
     <!-- Navigation -->
     <div class="navbar">
         <div class="nav-left">
-            <form action="books.php" method="GET">
+            <form action="search.php" method="GET">
                 <input type="text" name="search" placeholder="Search books...">
                 <button type="submit">Search</button>
             </form>
