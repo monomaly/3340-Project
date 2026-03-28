@@ -11,7 +11,7 @@ if (session_status() === PHP_SESSION_NONE) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>MKJM Bookstore</title>
 
-        <link rel="stylesheet" href="/WWW/style.css">
+        <link rel="stylesheet" href="/style.css">
     </head>
     <body>
     <!-- Navigation -->
@@ -28,14 +28,14 @@ if (session_status() === PHP_SESSION_NONE) {
             <div class="dropdown">
                 <button class="dropbtn">Wiki</button>
                 <div class="dropdown-content">
-                    <a href="/WWW/WikiPages/readguide.php">Read Guide</a>
-                    <a href="/WWW/WikiPages/authors.php">Famous Authors</a>
-                    <a href="/WWW/WikiPages/genres.php">Genres</a>
-                    <a href="/WWW/WikiPages/bookrec.php">Book Recommendations</a>
-                    <a href="/WWW/WikiPages/booktomovie.php">Book-to-Movie Adaptations</a>
+                    <a href="/WikiPages/readguide.php">Read Guide</a>
+                    <a href="/WikiPages/authors.php">Famous Authors</a>
+                    <a href="/WikiPages/genres.php">Genres</a>
+                    <a href="/WikiPages/bookrec.php">Book Recommendations</a>
+                    <a href="/WikiPages/booktomovie.php">Book-to-Movie Adaptations</a>
                 </div>
             </div>
-            <a href="/WWW/cart.php">Cart</a>
+            <a href="/cart.php">Cart</a>
             <div class="dropdown">
                 <button class="dropbtn">
                     <?php 
@@ -49,12 +49,12 @@ if (session_status() === PHP_SESSION_NONE) {
 
                 <div class="dropdown-content">
                     <?php if (isset($_SESSION['user'])): ?>
-                        <a href="/WWW/account.php">Profile</a>
-                        <a href="/WWW/orders.php">Orders</a>
-                        <a href="/WWW/logout.php">Logout</a>
+                        <a href="/account.php">Profile</a>
+                        <a href="/orders.php">Orders</a>
+                        <a href="/logout.php">Logout</a>
                     <?php else: ?>
-                        <a href="/WWW/login.php">Login</a>
-                        <a href="/WWW/signup.php">Sign Up</a>
+                        <a href="/login.php">Login</a>
+                        <a href="/signup.php">Sign Up</a>
                     <?php endif; ?>
                 </div>
             </div>
@@ -64,4 +64,15 @@ if (session_status() === PHP_SESSION_NONE) {
     <div class="header-box">
         <h1>The MKJM Bookstore</h1>
     </div>
+<div>
+    <?php
+    $cart_count = 0;
+    if (isset($_SESSION['user'])) {
+        $count_stmt = $pdo->prepare("SELECT SUM(quantity) FROM cart WHERE user_id = ?");
+        $count_stmt->execute([$_SESSION['user']['id']]);
+        $cart_count = $count_stmt->fetchColumn() ?: 0;
+    }
+?>
+</div>
+<a href="/cart.php">Cart (<strong><?php echo $cart_count; ?></strong>)</a>
 </html>
