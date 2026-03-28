@@ -51,7 +51,7 @@ if ($search !== '') {
                     <p class="stock">
                         <?php echo $book['stock'] > 0 ? 'In Stock' : 'Out of Stock'; ?>
                     </p>
-                    <a href="/WWW/book.php?id=<?php echo $book['id']; ?>" class="btn">View Book</a>
+                    <a href="/book.php?id=<?php echo $book['id']; ?>" class="btn">View Book</a>
                 </div>
             <?php endforeach; ?>
         </div>

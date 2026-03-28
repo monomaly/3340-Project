@@ -2,7 +2,7 @@
 
 <link rel="stylesheet" href="style.css"> 
 
-    <script src="/WWW/js/script.js"></script>
+    <script src="/js/script.js"></script>
     <!-- Recommending best series to read on front page -->
     <div class="best-series">
         <h2>BEST SERIES</h2>
@@ -36,7 +36,7 @@
     <div class="map-container">
         <h2>Find Us</h2>
         <iframe 
-            src="https://www.google.com/maps?q=Windsor,Ontario&output=embed"
+            src="https:/.google.com/maps?q=Windsor,Ontario&output=embed"
             width="100%"
             height="400"
             style="border:0"
