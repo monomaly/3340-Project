@@ -25,6 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <?php include 'includes/header.php';?>
+<link rel="stylesheet" href="style.css"> 
 
 <div class="account-container">
     <div class="account-section">
