@@ -41,9 +41,9 @@ CREATE TABLE IF NOT EXISTS users (
     role ENUM('admin', 'user') DEFAULT 'user'
 );
 
-INSERT INTO users (username, email, password_hash, role) VALUES
+INSERT INTO users (username, email, role) VALUES
 ('admin', 'admin@bookstore.com', 'admin'),
-('john', 'john@bookstore.com', 'user');
+('john',  'john@bookstore.com',  'user');
 
 CREATE TABLE IF NOT EXISTS cart (
     id INT AUTO_INCREMENT PRIMARY KEY,
