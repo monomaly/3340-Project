@@ -1,6 +1,6 @@
 <?php include 'includes/header.php'; ?>
 
-<!-- <link rel="stylesheet" href="style.css"> -->
+<link rel="stylesheet" href="style.css"> 
 
     <script src="/WWW/js/script.js"></script>
     <!-- Recommending best series to read on front page -->
