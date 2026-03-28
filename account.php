@@ -1,4 +1,5 @@
 <?php
+require_once 'includes/db.php';
 session_start();
 
 // FAKE LOGIN (for testing)
@@ -24,19 +25,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-<?php include 'includes/header.php';?>
-<link rel="stylesheet" href="style.css"> 
+<?php include 'includes/header.php'; ?>
+<link rel="stylesheet" href="style.css">
 
 <div class="account-container">
     <div class="account-section">
         <h2>My Profile</h2>
-        <p><strong>Name: </strong><?php echo htmlspecialchars($user['name']??'N/A')?></p>
-        <p><strong>Email: </strong><?php echo htmlspecialchars($user['email']??'N/A')?></p>
+        <p><strong>Name: </strong><?php echo htmlspecialchars($user['name'] ?? 'N/A'); ?></p>
+        <p><strong>Email: </strong><?php echo htmlspecialchars($user['email'] ?? 'N/A'); ?></p>
     </div>
 
     <div class="account-section">
         <h2>Edit Profile</h2>
-        <form method = "POST">
+        <form method="POST">
             <input type="text" name="name" placeholder="Enter new name">
             <input type="email" name="email" placeholder="Enter new email">
             <button type="submit">Update Profile</button>
@@ -49,8 +50,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <div class="account-section">
         <h2>Account Actions</h2>
-        <a href="/cart.php" class="account-btn">View Cart</a>
-        <a href="/logout.php" class="account-btn logout">Logout</a>
+        <a href="cart.php" class="account-btn">View Cart</a>
+        <a href="logout.php" class="account-btn logout">Logout</a>
     </div>
 </div>
 
