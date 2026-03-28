@@ -36,8 +36,8 @@
     <div class="map-container">
         <h2>Find Us</h2>
         <iframe 
-            src="https:/.google.com/maps?q=Windsor,Ontario&output=embed"
-            width="100%"
+         src="https://www.google.com/maps?q=Windsor,Ontario&output=embed"            
+         width="100%"
             height="400"
             style="border:0"
             allowfullscreen=""
