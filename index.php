@@ -36,7 +36,11 @@ $featured_books = $stmt->fetchAll();
         <h2>About Us</h2>
         <p>We are an online bookstore dedicated to bringing
             you the best book series, from fantasy to mystery
-            and everything in between.
+            and everything in between. In the modern age of digital media, we believe in the timeless joy of reading physical books. Our mission is to connect readers with their next great adventure, one page at a time.</p>
+        <p>Whether you're a lifelong bookworm or just discovering the magic of reading, we have something for everyone. Our curated selection of books is handpicked to ensure quality and variety, so you can find the perfect book for any mood or occasion. Join us on this literary journey and discover your next favorite book today!</p>
+        <p>Our team is passionate about books and dedicated to providing excellent customer service. We strive to create a welcoming and inclusive community for readers of all backgrounds. We believe that books have the power to inspire, educate, and bring people together, and we are committed to fostering a love of reading in our customers. Thank you for choosing us as your go-to online bookstore!</p>
+        <p>We are proud to offer a wide selection of books at competitive prices, and we are always looking for ways to improve our service and provide the best possible experience for our customers. Whether you're looking for the latest bestseller or a hidden gem, we are here to help you find it. Thank you for being a part of our community, and happy reading!</p>
+        <p>At our online bookstore, we are committed to sustainability and reducing our environmental impact.
         </p>
     </div>
     <!-- Find Us on the google maps -->
