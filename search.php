@@ -39,6 +39,11 @@ if ($search !== '') {
         <div class="book-grid">
             <?php foreach ($books as $book): ?>
                 <div class="book-card">
+                     <img 
+        src="images/book_images/<?php echo $book['cover_image']; ?>"
+        alt="<?php echo htmlspecialchars($book['title']); ?>"
+        style="width:100%; height:200px; object-fit:cover;"
+    >
                     <h3><?php echo htmlspecialchars($book['title']); ?></h3>
                     <p class="author">by <?php echo htmlspecialchars($book['author']); ?></p>
                     <p class="price">$<?php echo number_format($book['price'], 2); ?></p>
