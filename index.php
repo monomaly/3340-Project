@@ -1,4 +1,3 @@
-<?php include 'includes/header.php'; ?>
 
 <link rel="stylesheet" href="style.css"> 
 
@@ -6,7 +5,7 @@
 
 <?php
 require_once 'includes/db.php';
-
+include 'includes/header.php';
 // Fetch 10 random books for the carousel
 $stmt = $pdo->prepare("SELECT id, title, cover_image FROM books ORDER BY RAND() LIMIT 10");
 $stmt->execute();
