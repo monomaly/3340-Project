@@ -3,24 +3,32 @@
 <link rel="stylesheet" href="style.css"> 
 
     <script src="/js/script.js"></script>
-    <!-- Recommending best series to read on front page -->
-    <div class="best-series">
-        <h2>BEST SERIES</h2>
 
-        <div class="series-grid">
-            <div class="series-card">
-                <img src="IMAGE">
-                <h3>SERIES ONE</h3>
-            </div>
+<?php
+require_once 'includes/db.php';
 
-            <div class="series-card">
-                <img src="IMAGE">
-                <h3>SERIES TWO</h3>
-            </div>
+// Fetch 10 random books for the carousel
+$stmt = $pdo->prepare("SELECT id, title, cover_image FROM books ORDER BY RAND() LIMIT 10");
+$stmt->execute();
+$featured_books = $stmt->fetchAll();
+?>
 
-            <div class="series-card">
-                <img src="IMAGE">
-                <h3>SERIES THREE</h3>
+    <!-- Featured Books Carousel -->
+    <div class="book-carousel">
+        <h2>Featured Books</h2>
+        <div class="carousel-container">
+            <div class="carousel-slide">
+                <?php foreach ($featured_books as $book): ?>
+                    <a href="book.php?id=<?= $book['id'] ?>" class="book-link">
+                        <img src="images/book_images/<?= $book['cover_image'] ?>" alt="<?= htmlspecialchars($book['title']) ?>">
+                    </a>
+                <?php endforeach; ?>
+                <!-- Duplicate for seamless loop -->
+                <?php foreach ($featured_books as $book): ?>
+                    <a href="book.php?id=<?= $book['id'] ?>" class="book-link">
+                        <img src="images/book_images/<?= $book['cover_image'] ?>" alt="<?= htmlspecialchars($book['title']) ?>">
+                    </a>
+                <?php endforeach; ?>
             </div>
         </div>
     </div>
