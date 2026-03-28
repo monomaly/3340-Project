@@ -64,4 +64,15 @@ if (session_status() === PHP_SESSION_NONE) {
     <div class="header-box">
         <h1>The MKJM Bookstore</h1>
     </div>
+<div>
+    <?php
+    $cart_count = 0;
+    if (isset($_SESSION['user'])) {
+        $count_stmt = $pdo->prepare("SELECT SUM(quantity) FROM cart WHERE user_id = ?");
+        $count_stmt->execute([$_SESSION['user']['id']]);
+        $cart_count = $count_stmt->fetchColumn() ?: 0;
+    }
+?>
+</div>
+<a href="/cart.php">Cart (<strong><?php echo $cart_count; ?></strong>)</a>
 </html>
