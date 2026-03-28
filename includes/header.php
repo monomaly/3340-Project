@@ -23,7 +23,7 @@ if (session_status() === PHP_SESSION_NONE) {
             </form>
         </div>
         <div class="nav-right">
-            <a href="/WWW/index.php">Home</a>
+            <a href="/index.php">Home</a>
             <!-- Wiki pages -->
             <div class="dropdown">
                 <button class="dropbtn">Wiki</button>

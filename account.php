@@ -25,6 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <?php include 'includes/header.php';?>
+<link rel="stylesheet" href="style.css"> 
 
 <div class="account-container">
     <div class="account-section">
@@ -48,8 +49,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <div class="account-section">
         <h2>Account Actions</h2>
-        <a href="/WWW/cart.php" class="account-btn">View Cart</a>
-        <a href="/WWW/logout.php" class="account-btn logout">Logout</a>
+        <a href="/cart.php" class="account-btn">View Cart</a>
+        <a href="/logout.php" class="account-btn logout">Logout</a>
     </div>
 </div>
 
