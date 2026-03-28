@@ -28,7 +28,7 @@
     <div class="about">
         <h2>About Us</h2>
         <p>We are an online bookstore dedicated to bringing
-            you the best book series, from fantast to mystery
+            you the best book series, from fantasy to mystery
             and everything in between.
         </p>
     </div>

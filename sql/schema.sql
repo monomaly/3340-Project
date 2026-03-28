@@ -10,6 +10,7 @@ CREATE TABLE IF NOT EXISTS books (
     rating TINYINT DEFAULT 0 CHECK (rating BETWEEN 0 AND 5),
     cover_image VARCHAR(255)
 );
+
 INSERT INTO books (title, author, price, stock, rating, cover_image) VALUES
 ('Harry Potter and the Philosopher''s Stone', 'J.K. Rowling',         12.99, 50, 5, 'harry_potter.avif'),
 ('The Lord of the Rings',                     'J.R.R. Tolkien',       24.99, 30, 5, 'lord_of_the_rings.avif'),
@@ -49,7 +50,8 @@ CREATE TABLE IF NOT EXISTS cart (
     user_id INT NOT NULL,
     book_id INT NOT NULL,
     quantity INT NOT NULL DEFAULT 1,
-    UNIQUE KEY unique_cart_item (user_id, book_id),
+    format ENUM('paperback', 'hardcover') NOT NULL DEFAULT 'paperback',
+    UNIQUE KEY unique_cart_item (user_id, book_id, format),
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
     FOREIGN KEY (book_id) REFERENCES books(id) ON DELETE CASCADE
 );
