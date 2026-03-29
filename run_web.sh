@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 set -e
 
 PROJECT_DIR=$(pwd)
@@ -51,7 +50,7 @@ elif [[ "$OS" == "fedora" ]]; then
     sudo systemctl start mysqld
 fi
 
-# Setup MySQL database 
+# Setup MySQL database
 echo ">>> Setting up database '$DB_NAME'..."
 
 sudo mysql -u root <<MYSQL
@@ -75,7 +74,7 @@ fi
 
 # Copy project to web root
 if [[ "$OS" == "debian" ]]; then
-    WEB_ROOT="/var/www/html/store"
+    WEB_ROOT="/var/www/html"
     echo ">>> Copying project to $WEB_ROOT..."
     sudo rm -rf "$WEB_ROOT"
     sudo cp -r "$PROJECT_DIR" "$WEB_ROOT"
@@ -85,7 +84,7 @@ if [[ "$OS" == "debian" ]]; then
     sudo systemctl restart apache2
 
 elif [[ "$OS" == "fedora" ]]; then
-    WEB_ROOT="/var/www/html/store"
+    WEB_ROOT="/var/www/html"
     echo ">>> Copying project to $WEB_ROOT..."
     sudo rm -rf "$WEB_ROOT"
     sudo cp -r "$PROJECT_DIR" "$WEB_ROOT"
@@ -95,7 +94,7 @@ elif [[ "$OS" == "fedora" ]]; then
     sudo systemctl restart httpd
 
 elif [[ "$OS" == "mac" ]]; then
-    WEB_ROOT="/opt/homebrew/var/www/store"
+    WEB_ROOT="/opt/homebrew/var/www"
     echo ">>> Copying project to $WEB_ROOT..."
     rm -rf "$WEB_ROOT"
     cp -r "$PROJECT_DIR" "$WEB_ROOT"
@@ -103,7 +102,7 @@ fi
 
 # Done
 echo ""
-echo "✅ All done! Visit: http://localhost/store"
+echo "✅ All done! Visit: http://localhost"
 echo "   To stop services:"
 if [[ "$OS" == "debian" ]]; then
     echo "     sudo systemctl stop apache2 mysql"
