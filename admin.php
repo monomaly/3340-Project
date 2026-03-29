@@ -1,6 +1,13 @@
 <?php
 require_once 'includes/db.php';
 
+// Fake admin login for testing
+$_SESSION['user'] = [
+    'id'       => 1,
+    'username' => 'Admin',
+    'role'     => 'admin'
+];
+
 // Auth check BEFORE any HTML output
 if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
     header('Location: login.php');
@@ -47,23 +54,18 @@ include 'includes/header.php';
         <h3>Manage</h3>
         <div class="admin-link-grid">
             <a href="manage_book.php" class="admin-link-card">
-                <span class="admin-link-icon">📚</span>
                 <span>Manage Books</span>
             </a>
-            <a href="admin_users.php" class="admin-link-card">
-                <span class="admin-link-icon">👥</span>
+            <a href="manage_users.php" class="admin-link-card">
                 <span>Manage Users</span>
             </a>
             <a href="admin_orders.php" class="admin-link-card">
-                <span class="admin-link-icon">📦</span>
                 <span>View Orders</span>
             </a>
-            <a href="admin_monitor.php" class="admin-link-card">
-                <span class="admin-link-icon">🖥️</span>
+            <a href="monitor.php" class="admin-link-card">
                 <span>Site Monitor</span>
             </a>
             <a href="admin_templates.php" class="admin-link-card">
-                <span class="admin-link-icon">🎨</span>
                 <span>Templates</span>
             </a>
         </div>
