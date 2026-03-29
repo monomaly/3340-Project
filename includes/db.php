@@ -3,7 +3,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// --- Detect if running locally ---
+//Detect if running locally
 $isLocal = ($_SERVER['SERVER_NAME'] === 'localhost' || $_SERVER['SERVER_ADDR'] === '127.0.0.1');
 
 if ($isLocal) {
@@ -22,7 +22,7 @@ if ($isLocal) {
 
 define('DB_CHARSET', 'utf8mb4');
 
-// --- Connect to database ---
+//Connect to database
 try {
     $dsn = "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=" . DB_CHARSET;
     $pdo = new PDO($dsn, DB_USER, DB_PASS, [
