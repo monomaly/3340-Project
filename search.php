@@ -1,14 +1,11 @@
 <?php
-//Stops the script if db.php is missing
 require_once 'includes/db.php';
-//Loads the site navigation/header.
 include 'includes/header.php';
 
-//use $_GET because search queries are typically shared via URLs
+
 $search = trim($_GET['search'] ?? '');
 $books = [];
 
-// use a Prepared Statement to prevent SQL Injection.
 if ($search !== '') {
     $stmt = $pdo->prepare("
         SELECT * FROM books 
@@ -16,12 +13,10 @@ if ($search !== '') {
            OR author LIKE :author
         ORDER BY title ASC
     ");
-    //wrap the search term in '%' wildcards so it matches anywhere in the string
     $stmt->execute([
         'title'  => '%' . $search . '%',
         'author' => '%' . $search . '%'
     ]);
-    // fetch all matching rows as an associative array.
     $books = $stmt->fetchAll();
 }
 ?>
