@@ -12,6 +12,8 @@ if (session_status() === PHP_SESSION_NONE) {
         <title>MKJM Bookstore</title>
 
         <link rel="stylesheet" href="/WWW/style.css">
+
+        <link rel="stylesheet" href="/<?php echo $css_file; ?>">
     </head>
     <body>
     <!-- Navigation -->
