@@ -411,54 +411,20 @@ body{
 .btn-sm { padding: 4px 10px; font-size: 13px; }
 .btn-danger { background: #c0392b; }
 
-/*Admin Dashboard*/
+
+
 .admin-dashboard { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
 .admin-welcome { color: #666; margin: 0 0 24px; }
-
-.stat-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 16px;
-    margin-bottom: 32px;
-}
-.stat-card {
-    background: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-}
+.stat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; margin-bottom: 32px; }
+.stat-card { background: #f9f9f9; border: 1px solid #ddd; border-radius: 10px; padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 6px; }
 .stat-warning { border-color: #e67e22; background: #fef9f0; }
 .stat-number { font-size: 36px; font-weight: bold; color: #333; }
 .stat-label { font-size: 13px; color: #888; }
-
 .admin-links { margin-bottom: 32px; }
-.admin-link-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 16px;
-    margin-top: 12px;
-}
-.admin-link-card {
-    background: #333;
-    color: white;
-    border-radius: 10px;
-    padding: 20px;
-    text-decoration: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    font-size: 14px;
-    font-weight: 600;
-    transition: background 0.2s;
-}
+.admin-link-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 16px; margin-top: 12px; }
+.admin-link-card { background: #333; color: white; border-radius: 10px; padding: 20px; text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 10px; font-size: 14px; font-weight: 600; transition: background 0.2s; }
 .admin-link-card:hover { background: #555; }
 .admin-link-icon { font-size: 28px; }
-
 .admin-recent h3 { margin-bottom: 12px; }
 .admin-table { width: 100%; border-collapse: collapse; font-size: 14px; }
 .admin-table th, .admin-table td { padding: 10px 12px; border: 1px solid #ddd; text-align: left; }
@@ -467,6 +433,9 @@ body{
 .low-stock { color: #e74c3c; font-weight: bold; }
 .btn { display: inline-block; padding: 6px 14px; background: #333; color: white; border-radius: 6px; text-decoration: none; font-size: 13px; }
 .btn-sm { padding: 4px 10px; font-size: 12px; }
+
+
+
 
 /* Login Page */
 .login-page {

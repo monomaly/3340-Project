@@ -1,23 +1,20 @@
 <?php
 require_once 'includes/db.php';
-include 'includes/header.php';
 
-
-
-// Redirect if not admin
+// Auth check BEFORE any HTML output
 if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
     header('Location: login.php');
     exit();
 }
 
-// ── Stats ─────────────────────────────────────────────────────
-$total_books = $pdo->query("SELECT COUNT(*) FROM books")->fetchColumn();
-$total_users = $pdo->query("SELECT COUNT(*) FROM users")->fetchColumn();
-$total_carts = $pdo->query("SELECT COUNT(DISTINCT user_id) FROM cart")->fetchColumn();
-$low_stock   = $pdo->query("SELECT COUNT(*) FROM books WHERE stock < 5")->fetchColumn();
-
-// ── Recent books ──────────────────────────────────────────────
+// Stats
+$total_books  = $pdo->query("SELECT COUNT(*) FROM books")->fetchColumn();
+$total_users  = $pdo->query("SELECT COUNT(*) FROM users")->fetchColumn();
+$total_carts  = $pdo->query("SELECT COUNT(DISTINCT user_id) FROM cart")->fetchColumn();
+$low_stock    = $pdo->query("SELECT COUNT(*) FROM books WHERE stock < 5")->fetchColumn();
 $recent_books = $pdo->query("SELECT * FROM books ORDER BY id DESC LIMIT 5")->fetchAll();
+
+include 'includes/header.php';
 ?>
 
 <div class="admin-dashboard">
@@ -49,7 +46,7 @@ $recent_books = $pdo->query("SELECT * FROM books ORDER BY id DESC LIMIT 5")->fet
     <div class="admin-links">
         <h3>Manage</h3>
         <div class="admin-link-grid">
-            <a href="manage_books.php" class="admin-link-card">
+            <a href="manage_book.php" class="admin-link-card">
                 <span class="admin-link-icon">📚</span>
                 <span>Manage Books</span>
             </a>
@@ -106,7 +103,7 @@ $recent_books = $pdo->query("SELECT * FROM books ORDER BY id DESC LIMIT 5")->fet
                         <?php echo $book['stock']; ?>
                     </td>
                     <td>
-                        <a href="manage_books.php?edit=<?php echo $book['id']; ?>" class="btn btn-sm">Edit</a>
+                        <a href="manage_book.php?edit=<?php echo $book['id']; ?>" class="btn btn-sm">Edit</a>
                     </td>
                 </tr>
                 <?php endforeach; ?>
@@ -115,6 +112,5 @@ $recent_books = $pdo->query("SELECT * FROM books ORDER BY id DESC LIMIT 5")->fet
     </div>
 
 </div>
-
 
 <?php include 'includes/footer.php'; ?>

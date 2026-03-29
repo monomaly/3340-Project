@@ -22,7 +22,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'role'     => $user['role']
             ];
 
-            // Redirect admin to dashboard, users to home
             if ($user['role'] === 'admin') {
                 header('Location: admin.php');
             } else {
