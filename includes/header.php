@@ -40,6 +40,7 @@ $css_file = $template_css[$current_template] ?? 'style.css';
                     <a href="/WikiPages/genres.php">Genres</a>
                     <a href="/WikiPages/bookrec.php">Book Recommendations</a>
                     <a href="/WikiPages/booktomovie.php">Book-to-Movie Adaptations</a>
+                    <a href="/admin/logoutorin.php"> Log In/Out Guide </a>
                 </div>
             </div>
             <a href="/cart.php">
@@ -73,8 +74,9 @@ $css_file = $template_css[$current_template] ?? 'style.css';
                     <?php else: ?>
                         <a href="/login.php">Login</a>
                         <a href="/signup.php">Sign Up</a>
-                        <a href="/admin/logoutorin.php">Login/Logout Guide</a>
+                        <a href="/admin/logoutorin.php">Log In/out Guide</a>
                 <div class="dropdown">
+         </div>
 </div>
                     <?php endif; ?>
                 </div>
