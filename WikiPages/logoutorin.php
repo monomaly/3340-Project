@@ -13,7 +13,7 @@ include '../includes/header.php';
 <div class="wiki-page">
     
     <div class="header-box">
-        <h2>User Guide: Login & Logout</h2>
+        <h2 style="color: white;">User Guide: Login & Logout</h2>
         <p>Follow these steps to manage your account access safely.</p>
     </div>
 
