@@ -612,3 +612,20 @@ body{
 .badge { padding: 4px 12px; border-radius: 12px; font-size: 13px; font-weight: 600; }
 .badge.online { background: #d4edda; color: #155724; }
 .badge.offline { background: #f8d7da; color: #721c24; }
+
+/* Guide video section */
+.guide-section {
+    max-width: 860px;
+    margin: 40px auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.guide-section h2 {
+    margin-bottom: 10px;
+}
+
+.guide-section p {
+    color: #666;
+    margin-bottom: 20px;
+}

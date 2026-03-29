@@ -31,16 +31,22 @@ $featured_books = $stmt->fetchAll();
     </div>
 </div>
 
+<!-- Beginner Guide Video -->
+<div class="guide-section">
+    <h2>New Here? Watch Our Guide</h2>
+    <p>Not sure where to start? This short video walks you through how to browse books, add them to your cart, and place an order.</p>
+    <video controls width="100%" style="max-width:800px; border-radius:8px; display:block; margin:0 auto;">
+        <source src="videos/user-guide.webm" type="video/webm">
+        Your browser does not support the video tag.
+    </video>
+</div>
+
 <!-- About Us Section -->
 <div class="about">
     <h2>About Us</h2>
-    <p>We are an online bookstore dedicated to bringing
-        you the best book series, from fantasy to mystery
-        and everything in between. In the modern age of digital media, we believe in the timeless joy of reading physical books. Our mission is to connect readers with their next great adventure, one page at a time.</p>
-    <p>Whether you're a lifelong bookworm or just discovering the magic of reading, we have something for everyone. Our curated selection of books is handpicked to ensure quality and variety, so you can find the perfect book for any mood or occasion. Join us on this literary journey and discover your next favorite book today!</p>
-    <p>Our team is passionate about books and dedicated to providing excellent customer service. We strive to create a welcoming and inclusive community for readers of all backgrounds. We believe that books have the power to inspire, educate, and bring people together, and we are committed to fostering a love of reading in our customers. Thank you for choosing us as your go-to online bookstore!</p>
-    <p>We are proud to offer a wide selection of books at competitive prices, and we are always looking for ways to improve our service and provide the best possible experience for our customers. Whether you're looking for the latest bestseller or a hidden gem, we are here to help you find it. Thank you for being a part of our community, and happy reading!</p>
-    <p>At our online bookstore, we are committed to sustainability and reducing our environmental impact.</p>
+    <p>We are an online bookstore dedicated to connecting readers with their next great adventure. From fantasy and mystery to romance and science fiction, our handpicked selection has something for every mood and every reader.</p>
+<p>We believe in the timeless joy of reading physical books. Whether you're a lifelong bookworm or just getting started, our team is here to help you find your next favourite from the latest bestseller to a hidden gem you never knew you needed.</p>
+<p>We are committed to excellent customer service, competitive prices, and building a welcoming community for readers of all backgrounds. Thank you for being part of ours happy reading!</p>
 </div>
 
 <!-- Find Us on Google Maps -->
