@@ -15,13 +15,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!empty($_POST['email'])) {
         $_SESSION['user']['email'] = $_POST['email'];
     }
-    if (isset($_POST['template'])) {
-        $template = $_POST['template'];
-        if (in_array($template, ['default', 'dark', 'minimal'])) {
-            $_SESSION['site_template'] = $template;
-            $message = 'Theme changed successfully!';
-        }
-    }
     header('Location: account.php');
     exit();
 }
@@ -51,27 +44,6 @@ include 'includes/header.php';
             <input type="text" name="username" placeholder="Enter new username">
             <input type="email" name="email" placeholder="Enter new email">
             <button type="submit">Update Profile</button>
-        </form>
-    </div>
-
-    <div class="account-section">
-        <h2>Theme Preferences</h2>
-        <p>Choose your preferred website theme:</p>
-        <p><strong>Current theme:</strong> <?php echo ucfirst($_SESSION['site_template'] ?? 'default'); ?></p>
-        <form method="POST" style="display: flex; gap: 10px; flex-wrap: wrap;">
-            <label style="display: flex; align-items: center; gap: 5px;">
-                <input type="radio" name="template" value="default" <?php echo (($_SESSION['site_template'] ?? 'default') === 'default') ? 'checked' : ''; ?>>
-                Default Theme
-            </label>
-            <label style="display: flex; align-items: center; gap: 5px;">
-                <input type="radio" name="template" value="dark" <?php echo (($_SESSION['site_template'] ?? 'default') === 'dark') ? 'checked' : ''; ?>>
-                Dark Theme
-            </label>
-            <label style="display: flex; align-items: center; gap: 5px;">
-                <input type="radio" name="template" value="minimal" <?php echo (($_SESSION['site_template'] ?? 'default') === 'minimal') ? 'checked' : ''; ?>>
-                Minimal Theme
-            </label>
-            <button type="submit" style="margin-left: 10px;">Apply Theme</button>
         </form>
     </div>
 
