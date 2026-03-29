@@ -4,6 +4,7 @@
     <h1>Book-to-Movie Adaptations</h1>
 
     <div class="wiki-section">
+              <!-- Display image related to the movie adaptation -->
         <img src="../images/HP.jpg">
         <div class="wiki-info">
             <h2>Harry Potter</h2>
