@@ -30,9 +30,11 @@ $css_file = $template_css[$current_template] ?? 'style.css';
     <!-- Navigation -->
     <div class="navbar">
         <div class="nav-left">
-            <form action="search.php" method="GET">
-                <input type="text" name="search" placeholder="Search books...">
-                <button type="submit">Search</button>
+            <form action="search.php" method="GET" class="search-form">
+                <div class="search-container">
+                    <input type="text" name="search" placeholder="Search for books by title or author..." autocomplete="off">
+                    <button type="submit" class="search-btn">Search</button>
+                </div>
             </form>
         </div>
         <div class="nav-right">
@@ -85,6 +87,19 @@ $css_file = $template_css[$current_template] ?? 'style.css';
             </div>
         </div>
     </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchInput = document.querySelector('input[name="search"]');
+
+        // Enter key handler for better UX
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                this.form.submit();
+            }
+        });
+    });
+    </script>
 
     <div class="header-box">
         <h1>The MKJM Bookstore</h1>
