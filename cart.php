@@ -2,7 +2,6 @@
 require_once 'includes/db.php';
 include 'includes/header.php';
 
-// Requirement #8: Private Area Check
 if (!isset($_SESSION['user'])) {
     echo "<div class='wiki-page'><p>Please <a href='login.php'>login</a> to view your cart.</p></div>";
     include 'includes/footer.php';
@@ -19,9 +18,13 @@ if (isset($_GET['remove'])) {
     exit();
 }
 
-// Fetch Cart items with Book details
-$stmt = $pdo->prepare("SELECT c.id as cart_id, b.title, b.price, c.quantity, b.cover_image 
-                       FROM cart c JOIN books b ON c.book_id = b.id WHERE c.user_id = ?");
+// Fetch Cart items with Book details including format
+$stmt = $pdo->prepare("
+    SELECT c.id as cart_id, b.title, b.price, c.quantity, c.format, b.cover_image
+    FROM cart c
+    JOIN books b ON c.book_id = b.id
+    WHERE c.user_id = ?
+");
 $stmt->execute([$user_id]);
 $cart_items = $stmt->fetchAll();
 ?>
@@ -34,19 +37,25 @@ $cart_items = $stmt->fetchAll();
         <?php else: ?>
             <table style="width:100%; border-collapse: collapse;">
                 <tr style="background:#f4f4f4;">
-                    <th style="padding:10px;">Book</th><th>Price</th><th>Qty</th><th>Total</th><th>Action</th>
+                    <th style="padding:10px;">Book</th>
+                    <th>Format</th>
+                    <th>Price</th>
+                    <th>Qty</th>
+                    <th>Total</th>
+                    <th>Action</th>
                 </tr>
-                <?php 
+                <?php
                 $grand_total = 0;
-                foreach ($cart_items as $item): 
+                foreach ($cart_items as $item):
                     $subtotal = $item['price'] * $item['quantity'];
                     $grand_total += $subtotal;
                 ?>
                 <tr style="border-bottom:1px solid #eee;">
                     <td style="padding:10px; display:flex; align-items:center; gap:10px;">
-                        <img src="images/book_images/<?php echo $item['cover_image']; ?>" width="40">
+                        <img src="images/book_images/<?php echo htmlspecialchars($item['cover_image']); ?>" width="40">
                         <?php echo htmlspecialchars($item['title']); ?>
                     </td>
+                    <td><?php echo ucfirst($item['format']); ?></td>
                     <td>$<?php echo number_format($item['price'], 2); ?></td>
                     <td><?php echo $item['quantity']; ?></td>
                     <td>$<?php echo number_format($subtotal, 2); ?></td>
@@ -61,4 +70,5 @@ $cart_items = $stmt->fetchAll();
         <?php endif; ?>
     </div>
 </div>
+
 <?php include 'includes/footer.php'; ?>
