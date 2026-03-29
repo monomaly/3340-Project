@@ -3,8 +3,8 @@
 <div class="wiki-page">
     <h1>Book-to-Movie Adaptations</h1>
 
+    <!-- HARRY POTTER -->
     <div class="wiki-section">
-              <!-- Display image related to the movie adaptation -->
         <img src="../images/HP.jpg">
         <div class="wiki-info">
             <h2>Harry Potter</h2>
@@ -33,6 +33,7 @@
         </div>
     </div>
 
+    <!-- LORD OF THE RINGS -->
     <div class="wiki-section">
         <img src="../images/HG.jpg">
         <div class="wiki-info">
@@ -47,6 +48,7 @@
         </div>
     </div>
 
+    <!-- DUNE -->
     <div class="wiki-section">
         <img src="../images/D.jpg">
         <div class="wiki-info">
@@ -60,6 +62,7 @@
         </div>
     </div>
 
+    <!-- THE CHRONICLES OF NARNIA -->
     <div class="wiki-section">
         <img src="../images/N.jpg">
         <div class="wiki-info">
