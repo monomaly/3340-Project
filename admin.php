@@ -1,12 +1,6 @@
 <?php
 require_once 'includes/db.php';
 
-// Fake admin login for testing
-$_SESSION['user'] = [
-    'id'       => 1,
-    'username' => 'Admin',
-    'role'     => 'admin'
-];
 
 // Auth check BEFORE any HTML output
 if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
