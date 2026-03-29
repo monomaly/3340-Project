@@ -73,6 +73,9 @@ $css_file = $template_css[$current_template] ?? 'style.css';
                     <?php else: ?>
                         <a href="/login.php">Login</a>
                         <a href="/signup.php">Sign Up</a>
+                        <a href="/admin/logoutorin.php">Login/Logout Guide</a>
+                <div class="dropdown">
+</div>
                     <?php endif; ?>
                 </div>
             </div>
