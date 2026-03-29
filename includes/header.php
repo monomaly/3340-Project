@@ -83,19 +83,7 @@ $css_file = $template_css[$current_template] ?? 'style.css';
             </div>
         </div>
     </div>
-
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const searchInput = document.querySelector('input[name="search"]');
-        if (searchInput) {
-            searchInput.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    this.form.submit();
-                }
-            });
-        }
-    });
-    </script>
+<script src="/script.js"></script>
 
     <div class="header-box">
         <h1>The MKJM Bookstore</h1>

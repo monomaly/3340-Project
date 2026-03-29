@@ -3,7 +3,7 @@
 <div class="wiki-page">
     <h1>Book Recommendations</h1>
 
-    <!-- HP -->
+    <!-- HARRY POTTER -->
     <div class="wiki-section">
         <img src="../images/HarPot.jpg">
         <div class="wiki-info">
