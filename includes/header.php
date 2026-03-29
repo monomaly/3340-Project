@@ -1,8 +1,10 @@
 <?php
+// Start the session only if one isn't already active to manage user login states
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+// Define theme and CSS settings
 $current_template = 'default';
 $template_css = [
     'default' => 'style.css'
@@ -19,7 +21,6 @@ $css_file = $template_css[$current_template] ?? 'style.css';
         <link rel="stylesheet" href="/<?php echo $css_file; ?>">
     </head>
     <body>
-    <!-- Navigation -->
     <div class="navbar">
         <div class="nav-left">
             <form action="search.php" method="GET" class="search-form">
@@ -29,9 +30,10 @@ $css_file = $template_css[$current_template] ?? 'style.css';
                 </div>
             </form>
         </div>
+        
         <div class="nav-right">
             <a href="/index.php">Home</a>
-            <!-- Wiki pages -->
+            
             <div class="dropdown">
                 <button class="dropbtn">Wiki</button>
                 <div class="dropdown-content">
@@ -40,13 +42,15 @@ $css_file = $template_css[$current_template] ?? 'style.css';
                     <a href="/WikiPages/genres.php">Genres</a>
                     <a href="/WikiPages/bookrec.php">Book Recommendations</a>
                     <a href="/WikiPages/booktomovie.php">Book-to-Movie Adaptations</a>
-                    <a href="/WikiPages/logoutorin.php"> Log In/Out Guide </a>
+                    <a href="/WikiPages/logoutorin.php">Log In/Out Guide</a>
                 </div>
             </div>
+
             <a href="/cart.php">
                 Cart
                 <?php
                 $cart_count = 0;
+                // If user is logged in, fetch current cart quantity from database
                 if (isset($_SESSION['user']) && isset($pdo)) {
                     $count_stmt = $pdo->prepare("SELECT SUM(quantity) FROM cart WHERE user_id = ?");
                     $count_stmt->execute([$_SESSION['user']['id']]);
@@ -57,9 +61,11 @@ $css_file = $template_css[$current_template] ?? 'style.css';
                     <span class="cart-badge"><?php echo $cart_count; ?></span>
                 <?php endif; ?>
             </a>
+
             <div class="dropdown">
                 <button class="dropbtn">
                     <?php
+                    // Display username if authenticated, otherwise generic "Account" label
                     if (isset($_SESSION['user'])) {
                         echo htmlspecialchars($_SESSION['user']['username'] ?? $_SESSION['user']['name'] ?? 'Account');
                     } else {
@@ -74,15 +80,13 @@ $css_file = $template_css[$current_template] ?? 'style.css';
                     <?php else: ?>
                         <a href="/login.php">Login</a>
                         <a href="/signup.php">Sign Up</a>
-                <div class="dropdown">
-         </div>
-</div>
                     <?php endif; ?>
                 </div>
             </div>
         </div>
     </div>
-<script src="/script.js"></script>
+    
+    <script src="/script.js"></script>
 
     <div class="header-box">
         <h1>The MKJM Bookstore</h1>

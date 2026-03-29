@@ -3,17 +3,17 @@
  // Provide an interactive step-by-step guide for User Login and Logout procedures.
 
 
-// Include database connection to ensure session handling is consistent across the site
+// Include database connection for consistent session handling across the site
 require_once '../includes/db.php'; 
 
-// Include the common header for navigation and CSS template support
+// Include the common header for navigation and CSS template
 include '../includes/header.php'; 
 ?>
 
 <div class="wiki-page">
     
     <div class="header-box">
-        <h2>User Guide: Login & Logout</h2>
+        <h2 style="color: white;">User Guide: Login & Logout</h2>
         <p>Follow these steps to manage your account access safely.</p>
     </div>
 
