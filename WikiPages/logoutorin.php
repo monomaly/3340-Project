@@ -3,10 +3,10 @@
  // Provide an interactive step-by-step guide for User Login and Logout procedures.
 
 
-// Include database connection to ensure session handling is consistent across the site
+// Include database connection for consistent session handling across the site
 require_once '../includes/db.php'; 
 
-// Include the common header for navigation and CSS template support
+// Include the common header for navigation and CSS template
 include '../includes/header.php'; 
 ?>
 
