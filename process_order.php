@@ -1,8 +1,5 @@
 <?php
-/**
- * Process Order Script
- * Requirement #5 & #6: Professional documentation and transaction handling
- */
+
 require_once 'includes/db.php';
 
 if (!isset($_SESSION['user']) || $_SERVER['REQUEST_METHOD'] !== 'POST') {
