@@ -21,6 +21,9 @@ $css_file = $template_css[$current_template] ?? 'style.css';
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>MKJM Bookstore</title>
+
+        <link rel="stylesheet" href="/WWW/style.css">
+
         <link rel="stylesheet" href="/<?php echo $css_file; ?>">
     </head>
     <body>
