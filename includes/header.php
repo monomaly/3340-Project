@@ -1,10 +1,10 @@
 <?php
-// Check if a session is already active; if not, start one to handle user login state
+// Start the session only if one isn't already active to manage user login states
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// Set the default template and CSS file path
+// Define theme and CSS settings
 $current_template = 'default';
 $template_css = [
     'default' => 'style.css'
@@ -50,7 +50,7 @@ $css_file = $template_css[$current_template] ?? 'style.css';
                 Cart
                 <?php
                 $cart_count = 0;
-                // If user is logged in, fetch the sum of items in their cart from the database
+                // If user is logged in, fetch current cart quantity from database
                 if (isset($_SESSION['user']) && isset($pdo)) {
                     $count_stmt = $pdo->prepare("SELECT SUM(quantity) FROM cart WHERE user_id = ?");
                     $count_stmt->execute([$_SESSION['user']['id']]);
@@ -65,7 +65,7 @@ $css_file = $template_css[$current_template] ?? 'style.css';
             <div class="dropdown">
                 <button class="dropbtn">
                     <?php
-                    // Display the username if logged in, otherwise show "Account"
+                    // Display username if authenticated, otherwise generic "Account" label
                     if (isset($_SESSION['user'])) {
                         echo htmlspecialchars($_SESSION['user']['username'] ?? $_SESSION['user']['name'] ?? 'Account');
                     } else {
