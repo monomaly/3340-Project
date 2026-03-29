@@ -1,4 +1,4 @@
-/*Navigation Start*/
+/* DEFAULT THEME STYLES */
 .navbar a{ 
     color: black;
     text-decoration: none;
@@ -433,8 +433,34 @@ body{
 .btn { display: inline-block; padding: 6px 14px; background: #333; color: white; border-radius: 6px; text-decoration: none; font-size: 13px; }
 .btn-sm { padding: 4px 10px; font-size: 12px; }
 
+/* Responsive */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 10px;
+    }
 
+    .stat-grid, .admin-link-grid {
+        grid-template-columns: 1fr;
+    }
 
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .form-row .form-group {
+        margin-bottom: 15px;
+    }
+
+    .series-grid, .book-carousel {
+        grid-template-columns: 1fr;
+    }
+
+    .carousel-slide {
+        animation-duration: 20s;
+    }
+}
 
 /* Login Page */
 .login-page {

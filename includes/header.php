@@ -2,6 +2,19 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+
+// Get current template
+$current_template = $_SESSION['site_template'] ?? 'default';
+
+// Map templates to CSS files
+$template_css = [
+    'default' => 'style.css',
+    'dark' => 'style-dark.css',
+    'minimal' => 'style-minimal.css'
+];
+
+// Use default if template not found
+$css_file = $template_css[$current_template] ?? 'style.css';
 ?>
 
 <!DOCTYPE html>
@@ -10,7 +23,7 @@ if (session_status() === PHP_SESSION_NONE) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>MKJM Bookstore</title>
-        <link rel="stylesheet" href="/style.css">
+        <link rel="stylesheet" href="/<?php echo $css_file; ?>">
     </head>
     <body>
     <!-- Navigation -->

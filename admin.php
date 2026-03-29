@@ -65,9 +65,6 @@ include 'includes/header.php';
             <a href="monitor.php" class="admin-link-card">
                 <span>Site Monitor</span>
             </a>
-            <a href="admin_templates.php" class="admin-link-card">
-                <span>Templates</span>
-            </a>
         </div>
     </div>
 
