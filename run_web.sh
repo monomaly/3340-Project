@@ -55,7 +55,7 @@ echo ">>> Setting up database '$DB_NAME'..."
 
 sudo mysql -u root <<MYSQL
 CREATE DATABASE IF NOT EXISTS \`$DB_NAME\`;
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '';
+ALTER USER 'root'@'localhost' IDENTIFIED WITH caching_sha2_password BY '';
 FLUSH PRIVILEGES;
 MYSQL
 
