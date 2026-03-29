@@ -1,58 +1,77 @@
 <?php
-require_once 'includes/db.php';
-session_start();
-
-// FAKE LOGIN (for testing)
-if (!isset($_SESSION['user'])) {
-    $_SESSION['user'] = [
-        'name' => 'Maria',
-        'email' => 'maria@example.com'
-    ];
-}
-$user = $_SESSION['user'];
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (!empty($_POST['name'])) {
-        $_SESSION['user']['name'] = $_POST['name'];
-    }
-
-    if (!empty($_POST['email'])) {
-        $_SESSION['user']['email'] = $_POST['email'];
-    }
-
-    header("Location: account.php");
-    exit();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
 }
 ?>
 
-<?php include 'includes/header.php'; ?>
-<link rel="stylesheet" href="style.css">
-
-<div class="account-container">
-    <div class="account-section">
-        <h2>My Profile</h2>
-        <p><strong>Name: </strong><?php echo htmlspecialchars($user['name'] ?? 'N/A'); ?></p>
-        <p><strong>Email: </strong><?php echo htmlspecialchars($user['email'] ?? 'N/A'); ?></p>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>MKJM Bookstore</title>
+        <link rel="stylesheet" href="/style.css">
+    </head>
+    <body>
+    <!-- Navigation -->
+    <div class="navbar">
+        <div class="nav-left">
+            <form action="search.php" method="GET">
+                <input type="text" name="search" placeholder="Search books...">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+        <div class="nav-right">
+            <a href="/index.php">Home</a>
+            <!-- Wiki pages -->
+            <div class="dropdown">
+                <button class="dropbtn">Wiki</button>
+                <div class="dropdown-content">
+                    <a href="/WikiPages/readguide.php">Read Guide</a>
+                    <a href="/WikiPages/authors.php">Famous Authors</a>
+                    <a href="/WikiPages/genres.php">Genres</a>
+                    <a href="/WikiPages/bookrec.php">Book Recommendations</a>
+                    <a href="/WikiPages/booktomovie.php">Book-to-Movie Adaptations</a>
+                </div>
+            </div>
+            <a href="/cart.php">
+                Cart
+                <?php
+                $cart_count = 0;
+                if (isset($_SESSION['user']) && isset($pdo)) {
+                    $count_stmt = $pdo->prepare("SELECT SUM(quantity) FROM cart WHERE user_id = ?");
+                    $count_stmt->execute([$_SESSION['user']['id']]);
+                    $cart_count = $count_stmt->fetchColumn() ?: 0;
+                }
+                ?>
+                <?php if ($cart_count > 0): ?>
+                    <span class="cart-badge"><?php echo $cart_count; ?></span>
+                <?php endif; ?>
+            </a>
+            <div class="dropdown">
+                <button class="dropbtn">
+                    <?php
+                    if (isset($_SESSION['user'])) {
+                        echo htmlspecialchars($_SESSION['user']['username'] ?? $_SESSION['user']['name'] ?? 'Account');
+                    } else {
+                        echo "Account";
+                    }
+                    ?>
+                </button>
+                <div class="dropdown-content">
+                    <?php if (isset($_SESSION['user'])): ?>
+                        <a href="/account.php">Profile</a>
+                        <a href="/orders.php">Orders</a>
+                        <a href="/logout.php">Logout</a>
+                    <?php else: ?>
+                        <a href="/login.php">Login</a>
+                        <a href="/signup.php">Sign Up</a>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="account-section">
-        <h2>Edit Profile</h2>
-        <form method="POST">
-            <input type="text" name="name" placeholder="Enter new name">
-            <input type="email" name="email" placeholder="Enter new email">
-            <button type="submit">Update Profile</button>
-        </form>
+    <div class="header-box">
+        <h1>The MKJM Bookstore</h1>
     </div>
-
-    <div class="account-section">
-        <h2>Order History</h2>
-    </div>
-
-    <div class="account-section">
-        <h2>Account Actions</h2>
-        <a href="cart.php" class="account-btn">View Cart</a>
-        <a href="logout.php" class="account-btn logout">Logout</a>
-    </div>
-</div>
-
-<?php include 'includes/footer.php'; ?>

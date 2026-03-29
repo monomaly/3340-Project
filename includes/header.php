@@ -10,7 +10,6 @@ if (session_status() === PHP_SESSION_NONE) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>MKJM Bookstore</title>
-
         <link rel="stylesheet" href="/style.css">
     </head>
     <body>
@@ -35,18 +34,30 @@ if (session_status() === PHP_SESSION_NONE) {
                     <a href="/WikiPages/booktomovie.php">Book-to-Movie Adaptations</a>
                 </div>
             </div>
-            <a href="/cart.php">Cart</a>
+            <a href="/cart.php">
+                Cart
+                <?php
+                $cart_count = 0;
+                if (isset($_SESSION['user']) && isset($pdo)) {
+                    $count_stmt = $pdo->prepare("SELECT SUM(quantity) FROM cart WHERE user_id = ?");
+                    $count_stmt->execute([$_SESSION['user']['id']]);
+                    $cart_count = $count_stmt->fetchColumn() ?: 0;
+                }
+                ?>
+                <?php if ($cart_count > 0): ?>
+                    <span class="cart-badge"><?php echo $cart_count; ?></span>
+                <?php endif; ?>
+            </a>
             <div class="dropdown">
                 <button class="dropbtn">
-                    <?php 
+                    <?php
                     if (isset($_SESSION['user'])) {
-                        echo $_SESSION['user']['name']; 
+                        echo htmlspecialchars($_SESSION['user']['username'] ?? $_SESSION['user']['name'] ?? 'Account');
                     } else {
                         echo "Account";
                     }
                     ?>
                 </button>
-
                 <div class="dropdown-content">
                     <?php if (isset($_SESSION['user'])): ?>
                         <a href="/account.php">Profile</a>
@@ -64,15 +75,3 @@ if (session_status() === PHP_SESSION_NONE) {
     <div class="header-box">
         <h1>The MKJM Bookstore</h1>
     </div>
-<div>
-    <?php
-    $cart_count = 0;
-    if (isset($_SESSION['user'])) {
-        $count_stmt = $pdo->prepare("SELECT SUM(quantity) FROM cart WHERE user_id = ?");
-        $count_stmt->execute([$_SESSION['user']['id']]);
-        $cart_count = $count_stmt->fetchColumn() ?: 0;
-    }
-?>
-</div>
-<a href="/cart.php">Cart (<strong><?php echo $cart_count; ?></strong>)</a>
-</html>

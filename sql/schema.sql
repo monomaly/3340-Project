@@ -38,12 +38,14 @@ CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(80) NOT NULL UNIQUE,
     email VARCHAR(150) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NOT NULL,
     role ENUM('admin', 'user') DEFAULT 'user'
 );
 
-INSERT INTO users (username, email, role) VALUES
-('admin', 'admin@bookstore.com', 'admin'),
-('john',  'john@bookstore.com',  'user');
+-- Password for both accounts is: password
+INSERT INTO users (username, email, password_hash, role) VALUES
+('admin', 'admin@bookstore.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin'),
+('john',  'john@bookstore.com',  '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'user');
 
 CREATE TABLE IF NOT EXISTS cart (
     id INT AUTO_INCREMENT PRIMARY KEY,
