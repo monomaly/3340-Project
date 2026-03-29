@@ -1,6 +1,6 @@
 /* DEFAULT THEME STYLES */
 .navbar a{ 
-    color: black;
+    color: white;
     text-decoration: none;
     margin: 0 15px;
     font-size: 18px;
@@ -10,10 +10,11 @@
     display: flex;
     justify-content: space-between; 
     align-items: center;            
-    background-color: #ffffff;
+    background-color: #2c2c2c;
     padding: 10px 20px;
-     position: relative;
+    position: relative;
     z-index: 1000;
+    margin: 0;
 }
 
 .search-bar{
@@ -31,14 +32,21 @@
 }
 
 .header-box{
-    background-color: lightblue;
-    padding: 20px 0;
+    background-color: #3a3a3a;
+    padding: 12px 20px;
     text-align: center;
+    margin: 0;
+}
+
+.header-box h1 {
+    margin: 0;
+    color: white;
 }
 /*Navigation End*/
 
 body{
-    margin-top: 60px;
+    margin: 0;
+    padding: 0;
     background-color: rgb(255, 255, 255);
     text-align: left;
 }
@@ -136,6 +144,7 @@ body{
     border: none;
     font-size: 18px;
     cursor: pointer;
+    color: white;
 }
 
 .dropdown-content{
@@ -144,7 +153,7 @@ body{
     background-color: white;
     min-width: 160px;
     box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
-     z-index: 1001;
+    z-index: 1001;
 }
 
 .dropdown-content a{
@@ -309,10 +318,15 @@ body{
     border-radius: 8px;
     padding: 15px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.book-card .btn {
+    margin-top: auto;
 }
 
 /*individual book page*/
-/* Book Detail Page */
 .book-page {
     max-width: 900px;
     margin: 40px auto;
@@ -394,6 +408,7 @@ body{
         width: 100%;
     }
 }
+
 /*Add and edit books page*/
 .admin-page { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
 .admin-message { background: #d4edda; color: #155724; padding: 10px 16px; border-radius: 6px; margin: 16px 0; }
@@ -409,12 +424,8 @@ body{
 .admin-table th, .admin-table td { padding: 10px 12px; border: 1px solid #ddd; text-align: left; }
 .admin-table th { background: #f5f5f5; font-weight: 600; }
 .admin-table tr:nth-child(even) { background: #fafafa; }
-.btn { display: inline-block; padding: 8px 18px; background: #333; color: white; border: none; border-radius: 6px; cursor: pointer; text-decoration: none; font-size: 14px; margin-right: 6px; }
-.btn-secondary { background: #888; }
 .btn-sm { padding: 4px 10px; font-size: 13px; }
 .btn-danger { background: #c0392b; }
-
-
 
 .admin-dashboard { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
 .admin-welcome { color: #666; margin: 0 0 24px; }
@@ -428,13 +439,7 @@ body{
 .admin-link-card { background: #333; color: white; border-radius: 10px; padding: 20px; text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 10px; font-size: 14px; font-weight: 600; transition: background 0.2s; }
 .admin-link-card:hover { background: #555; }
 .admin-recent h3 { margin-bottom: 12px; }
-.admin-table { width: 100%; border-collapse: collapse; font-size: 14px; }
-.admin-table th, .admin-table td { padding: 10px 12px; border: 1px solid #ddd; text-align: left; }
-.admin-table th { background: #f5f5f5; font-weight: 600; }
-.admin-table tr:nth-child(even) { background: #fafafa; }
 .low-stock { color: #e74c3c; font-weight: bold; }
-.btn { display: inline-block; padding: 6px 14px; background: #333; color: white; border-radius: 6px; text-decoration: none; font-size: 13px; }
-.btn-sm { padding: 4px 10px; font-size: 12px; }
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -487,26 +492,6 @@ body{
 .login-box h2 {
     margin: 0 0 24px;
     text-align: center;
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    margin-bottom: 16px;
-}
-
-.form-group label {
-    font-weight: 600;
-    font-size: 14px;
-}
-
-.form-group input {
-    padding: 10px 12px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    font-size: 14px;
-    transition: border-color 0.2s;
 }
 
 .form-group input:focus {
@@ -591,23 +576,33 @@ body{
     background: #2980b9;
 }
 
+/* Cart badge */
+.cart-badge {
+    display: inline-block;
+    background: #e74c3c;
+    color: white;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 1px 6px;
+    border-radius: 10px;
+    margin-left: 4px;
+}
 
-
-
- 
-
-.admin-page { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
-.admin-table { width: 100%; border-collapse: collapse; font-size: 14px; }
-.admin-table th, .admin-table td { padding: 10px 12px; border: 1px solid #ddd; text-align: left; vertical-align: top; }
-.admin-table th { background: #f5f5f5; font-weight: 600; }
-.admin-table tr:nth-child(even) { background: #fafafa; }
-.btn { display: inline-block; padding: 8px 16px; background: #333; color: white; border: none; border-radius: 6px; cursor: pointer; text-decoration: none; font-size: 14px; margin-right: 6px; }
-.btn-secondary { background: #888; }
-.btn-sm { padding: 4px 10px; font-size: 13px; }
-select { padding: 4px 8px; border: 1px solid #ddd; border-radius: 6px; font-size: 13px; }
+/* Order status badges */
 .status-badge { padding: 3px 10px; border-radius: 10px; font-size: 12px; font-weight: 600; }
 .status-pending    { background: #fff3cd; color: #856404; }
 .status-processing { background: #cce5ff; color: #004085; }
 .status-shipped    { background: #d4edda; color: #155724; }
 .status-delivered  { background: #d1ecf1; color: #0c5460; }
 .status-cancelled  { background: #f8d7da; color: #721c24; }
+
+/* Monitor page */
+.monitor-page { max-width: 800px; margin: 40px auto; padding: 0 20px; }
+.monitor-time { color: #888; font-size: 14px; margin-bottom: 20px; }
+.monitor-table { width: 100%; border-collapse: collapse; }
+.monitor-table th, .monitor-table td { padding: 12px 16px; border: 1px solid #ddd; text-align: left; }
+.monitor-table th { background: #f5f5f5; font-weight: 600; }
+.monitor-table tr:nth-child(even) { background: #fafafa; }
+.badge { padding: 4px 12px; border-radius: 12px; font-size: 13px; font-weight: 600; }
+.badge.online { background: #d4edda; color: #155724; }
+.badge.offline { background: #f8d7da; color: #721c24; }
