@@ -1,6 +1,7 @@
 <?php include '../includes/header.php'; ?>
 
 <?php
+// Read the JSON file containing author data and decode it into a PHP array
 $data = json_decode(file_get_contents('../data/authors.json'), true);
 ?>
 

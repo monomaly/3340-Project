@@ -4,6 +4,7 @@ include 'includes/header.php';
 
 $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 
+// If no valid ID is provided, send the user back to the search page
 if ($id === 0) {
     header('Location: search.php');
     exit();
@@ -13,6 +14,8 @@ if ($id === 0) {
 $stmt = $pdo->prepare("SELECT * FROM books WHERE id = :id");
 $stmt->execute(['id' => $id]);
 $book = $stmt->fetch();
+
+// If the database returns nothing, show an error and stop.
 
 if (!$book) {
     echo "<p>Book not found.</p>";
@@ -31,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart'])) {
     $user_id  = $_SESSION['user']['id'];
     $quantity = max(1, (int)($_POST['quantity'] ?? 1));
     $format   = isset($_POST['format']) && $_POST['format'] === 'hardcover' ? 'hardcover' : 'paperback';
-
+//If the book is already in the user's cart, just increase the quantity, otherwise, insert a new row
     $stmt = $pdo->prepare("
         INSERT INTO cart (user_id, book_id, quantity, format)
         VALUES (:user_id, :book_id, :quantity, :format)
