@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Guide — MKJM Bookstore</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap');
+
+  :root {
+    --ink: #1a1a2e;
+    --paper: #faf7f2;
+    --accent: #c0392b;
+    --accent-light: #f9e8e6;
+    --muted: #6b6b7b;
+    --border: #e0dbd2;
+    --step-bg: #f4f1eb;
+    --sidebar-w: 260px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    display: flex;
+    min-height: 100vh;
+  }
+
+  /* ── Sidebar ── */
+  nav {
+    width: var(--sidebar-w);
+    min-height: 100vh;
+    background: var(--ink);
+    color: #fff;
+    position: fixed;
+    top: 0; left: 0;
+    padding: 2rem 0;
+    overflow-y: auto;
+    z-index: 100;
+  }
+
+  .nav-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding: 0 1.5rem 1.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    line-height: 1.3;
+  }
+  .nav-brand span { color: var(--accent); display: block; font-size: 0.75rem; font-family: 'Source Sans 3', sans-serif; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.3rem; }
+
+  .nav-section-title {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    padding: 1.5rem 1.5rem 0.5rem;
+  }
+
+  nav a {
+    display: block;
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    padding: 0.5rem 1.5rem;
+    font-size: 0.9rem;
+    border-left: 3px solid transparent;
+    transition: all 0.15s;
+  }
+  nav a:hover, nav a.active {
+    color: #fff;
+    border-left-color: var(--accent);
+    background: rgba(255,255,255,0.06);
+  }
+
+  /* ── Main ── */
+  main {
+    margin-left: var(--sidebar-w);
+    flex: 1;
+    padding: 3rem 4rem;
+    max-width: 900px;
+  }
+
+  .doc-header {
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 2rem;
+    margin-bottom: 3rem;
+  }
+  .doc-header .tag {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+  .doc-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+  .doc-header p {
+    color: var(--muted);
+    font-size: 1.05rem;
+    max-width: 600px;
+    line-height: 1.7;
+  }
+
+  section {
+    margin-bottom: 3.5rem;
+    scroll-margin-top: 2rem;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.7rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 1.75rem 0 0.75rem;
+    color: var(--accent);
+  }
+
+  p { line-height: 1.75; margin-bottom: 1rem; color: #2a2a3e; font-size: 0.97rem; }
+
+  /* Step list */
+  .steps { list-style: none; margin: 1rem 0 1.5rem; }
+  .steps li {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 0.9rem 1rem;
+    margin-bottom: 0.5rem;
+    background: var(--step-bg);
+    border-radius: 6px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  .steps li .num {
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.75rem;
+    min-width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+    flex-shrink: 0;
+  }
+
+  /* Tip / Note box */
+  .tip {
+    background: var(--accent-light);
+    border-left: 4px solid var(--accent);
+    padding: 0.9rem 1.1rem;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.92rem;
+    line-height: 1.65;
+    margin: 1.25rem 0;
+    color: #3a1a18;
+  }
+  .tip strong { color: var(--accent); }
+
+  /* Info card grid */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+    margin: 1.25rem 0;
+  }
+  .card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.1rem;
+  }
+  .card .card-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+  .card h4 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.4rem; }
+  .card p { font-size: 0.85rem; color: var(--muted); margin: 0; }
+
+  /* UI element label */
+  kbd {
+    background: var(--ink);
+    color: #fff;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.78rem;
+    padding: 0.15em 0.5em;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+
+  .page-label {
+    display: inline-block;
+    background: var(--step-bg);
+    border: 1px solid var(--border);
+    font-size: 0.8rem;
+    padding: 0.2em 0.6em;
+    border-radius: 4px;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.92rem; }
+  th { background: var(--ink); color: #fff; padding: 0.6rem 0.9rem; text-align: left; font-weight: 500; font-size: 0.85rem; }
+  td { padding: 0.6rem 0.9rem; border-bottom: 1px solid var(--border); }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: var(--step-bg); }
+
+  footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">
+    <span>User Guide</span>
+    MKJM Bookstore
+  </div>
+  <div class="nav-section-title">Getting Started</div>
+  <a href="#overview">Site Overview</a>
+  <a href="#signup">Creating an Account</a>
+  <a href="#login">Logging In</a>
+
+  <div class="nav-section-title">Using the Site</div>
+  <a href="#browsing">Browsing Books</a>
+  <a href="#search">Searching</a>
+  <a href="#wiki">Wiki Pages</a>
+  <a href="#cart">Your Cart</a>
+  <a href="#checkout">Checkout</a>
+
+  <div class="nav-section-title">Your Account</div>
+  <a href="#account">Account Settings</a>
+  <a href="#orders">Order History</a>
+  <a href="#logout">Logging Out</a>
+</nav>
+
+<main>
+  <div class="doc-header">
+    <div class="tag">End User Documentation</div>
+    <h1>MKJM Bookstore<br>User Guide</h1>
+    <p>A complete step-by-step guide to using the MKJM Bookstore at <strong>www.mkjm.ca</strong>. This guide covers everything from creating your account to browsing books and placing orders.</p>
+  </div>
+
+  <!-- OVERVIEW -->
+  <section id="overview">
+    <h2>Site Overview</h2>
+    <p>MKJM Bookstore is an online bookstore where you can browse a curated collection of books, add them to your cart, and place orders. The site also includes a Wiki section with reading guides, genre breakdowns, and book-to-movie adaptations.</p>
+
+    <h3>Navigation Bar</h3>
+    <p>The navigation bar is visible at the top of every page and contains the following links:</p>
+
+    <div class="card-grid">
+      <div class="card"><div class="card-icon">🏠</div><h4>Home</h4><p>Returns to the main homepage with featured books and site sections.</p></div>
+      <div class="card"><div class="card-icon">🔍</div><h4>Search</h4><p>Jump directly to the book search bar.</p></div>
+      <div class="card"><div class="card-icon">📖</div><h4>Wiki</h4><p>Browse reading guides, genres, and book-to-movie info.</p></div>
+      <div class="card"><div class="card-icon">🛒</div><h4>Cart</h4><p>View items you've added and proceed to checkout.</p></div>
+      <div class="card"><div class="card-icon">👤</div><h4>Your Name</h4><p>Access your account settings and order history.</p></div>
+    </div>
+
+    <div class="tip"><strong>Tip:</strong> If you are not logged in, the navigation will show a <kbd>Login</kbd> link instead of your name. You must be logged in to add books to your cart or place orders.</div>
+  </section>
+
+  <!-- SIGNUP -->
+  <section id="signup">
+    <h2>Creating an Account</h2>
+    <div class="page-label">signup.php</div>
+    <p>To use the full features of MKJM Bookstore — including adding to cart and placing orders — you need to create a free account.</p>
+
+    <h3>Step-by-Step</h3>
+    <ol class="steps">
+      <li><span class="num">1</span>Click the <kbd>Login</kbd> link in the top navigation bar.</li>
+      <li><span class="num">2</span>On the login page, click <kbd>Sign Up</kbd> at the bottom of the form.</li>
+      <li><span class="num">3</span>Fill in your desired <strong>Username</strong>, <strong>Email address</strong>, <strong>Password</strong>, and <strong>Confirm Password</strong>.</li>
+      <li><span class="num">4</span>Click <kbd>Create Account</kbd>.</li>
+      <li><span class="num">5</span>You will be automatically logged in and redirected to the homepage.</li>
+    </ol>
+
+    <h3>Requirements</h3>
+    <table>
+      <thead><tr><th>Field</th><th>Requirement</th></tr></thead>
+      <tbody>
+        <tr><td>Username</td><td>Must be unique — no two accounts can share a username.</td></tr>
+        <tr><td>Email</td><td>Must be a valid email address and not already registered.</td></tr>
+        <tr><td>Password</td><td>Minimum 6 characters.</td></tr>
+        <tr><td>Confirm Password</td><td>Must exactly match the password field.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="tip"><strong>Note:</strong> If your chosen username or email is already in use, you will see an error message and can try a different one.</div>
+  </section>
+
+  <!-- LOGIN -->
+  <section id="login">
+    <h2>Logging In</h2>
+    <div class="page-label">login.php</div>
+    <p>If you already have an account, log in to access your cart, orders, and account settings.</p>
+
+    <ol class="steps">
+      <li><span class="num">1</span>Click <kbd>Login</kbd> in the top navigation bar.</li>
+      <li><span class="num">2</span>Enter your <strong>Username</strong> and <strong>Password</strong>.</li>
+      <li><span class="num">3</span>Click <kbd>Login</kbd>. You will be redirected to the homepage.</li>
+    </ol>
+
+    <div class="tip"><strong>Forgot your password?</strong> Contact the site administrator to have your password reset.</div>
+  </section>
+
+  <!-- BROWSING -->
+  <section id="browsing">
+    <h2>Browsing Books</h2>
+    <div class="page-label">index.php / book.php</div>
+    <p>The homepage is the main way to discover books on the site. It is divided into several sections:</p>
+
+    <h3>Featured Books</h3>
+    <p>When you first arrive at the homepage, you will see a curated selection of featured books displayed as cards. Each card shows the book's cover image, title, author, price, and star rating. Click on any book card to view its full details page.</p>
+
+    <h3>Book Detail Page</h3>
+    <p>Clicking a book takes you to its detail page, which shows:</p>
+    <ul class="steps">
+      <li><span class="num">→</span>Full title and author name</li>
+      <li><span class="num">→</span>Price and current stock availability</li>
+      <li><span class="num">→</span>Star rating (0–5)</li>
+      <li><span class="num">→</span>Cover image</li>
+      <li><span class="num">→</span>Format selection (Paperback or Hardcover) and <kbd>Add to Cart</kbd> button</li>
+    </ul>
+
+    <div class="tip"><strong>Note:</strong> You must be logged in to add a book to your cart. If you are not logged in, you will be redirected to the login page.</div>
+  </section>
+
+  <!-- SEARCH -->
+  <section id="search">
+    <h2>Searching for Books</h2>
+    <div class="page-label">search.php</div>
+    <p>Use the search bar in the navigation to find a specific book quickly.</p>
+
+    <ol class="steps">
+      <li><span class="num">1</span>Click the search icon or the <kbd>Search</kbd> link in the navigation.</li>
+      <li><span class="num">2</span>Type a book title or author name into the search box.</li>
+      <li><span class="num">3</span>Matching results will appear as you type or after you press <kbd>Enter</kbd>.</li>
+      <li><span class="num">4</span>Click any result to go to that book's detail page.</li>
+    </ol>
+  </section>
+
+  <!-- WIKI -->
+  <section id="wiki">
+    <h2>Wiki Pages</h2>
+    <div class="page-label">WikiPages/</div>
+    <p>The Wiki section contains editorial content about books and reading. It can be accessed from the <kbd>Wiki</kbd> link in the navigation bar. The wiki includes the following pages:</p>
+
+    <div class="card-grid">
+      <div class="card"><div class="card-icon">✍️</div><h4>Authors</h4><p>Background information on featured authors.</p></div>
+      <div class="card"><div class="card-icon">🎬</div><h4>Book to Movie</h4><p>Books in our catalog that have been adapted into films.</p></div>
+      <div class="card"><div class="card-icon">📚</div><h4>Reading Guide</h4><p>Curated reading recommendations and tips.</p></div>
+      <div class="card"><div class="card-icon">⭐</div><h4>Book Recommendations</h4><p>Handpicked suggestions based on popular genres.</p></div>
+      <div class="card"><div class="card-icon">🏷️</div><h4>Genres</h4><p>Overview of the genres available in the store.</p></div>
+    </div>
+  </section>
+
+  <!-- CART -->
+  <section id="cart">
+    <h2>Your Cart</h2>
+    <div class="page-label">cart.php</div>
+    <p>Your cart holds all the books you've selected before placing an order.</p>
+
+    <h3>Adding a Book</h3>
+    <ol class="steps">
+      <li><span class="num">1</span>Navigate to a book's detail page.</li>
+      <li><span class="num">2</span>Select a format — <strong>Paperback</strong> or <strong>Hardcover</strong>.</li>
+      <li><span class="num">3</span>Click <kbd>Add to Cart</kbd>.</li>
+      <li><span class="num">4</span>The cart icon in the navigation will update to reflect your new item.</li>
+    </ol>
+
+    <h3>Viewing Your Cart</h3>
+    <ol class="steps">
+      <li><span class="num">1</span>Click the <kbd>Cart</kbd> icon in the navigation bar.</li>
+      <li><span class="num">2</span>You will see all items currently in your cart, including title, format, quantity, and price.</li>
+      <li><span class="num">3</span>You can remove items from your cart on this page.</li>
+    </ol>
+
+    <div class="tip"><strong>Note:</strong> Each unique combination of book and format (e.g. Dune — Hardcover) is treated as a separate cart item.</div>
+  </section>
+
+  <!-- CHECKOUT -->
+  <section id="checkout">
+    <h2>Checkout</h2>
+    <div class="page-label">process_order.php</div>
+    <p>Once you are happy with your cart, you can place your order.</p>
+
+    <ol class="steps">
+      <li><span class="num">1</span>Go to your cart by clicking <kbd>Cart</kbd> in the navigation.</li>
+      <li><span class="num">2</span>Review your items and confirm everything looks correct.</li>
+      <li><span class="num">3</span>Click <kbd>Proceed to Checkout</kbd>.</li>
+      <li><span class="num">4</span>Fill in your shipping and payment details on the checkout form.</li>
+      <li><span class="num">5</span>Submit your order. You will receive a confirmation on screen.</li>
+    </ol>
+
+    <div class="tip"><strong>Note:</strong> Online payment and shipping processing is currently being finalized. Orders submitted now will be reviewed and confirmed by the store administrator.</div>
+  </section>
+
+  <!-- ACCOUNT -->
+  <section id="account">
+    <h2>Account Settings</h2>
+    <div class="page-label">account.php</div>
+    <p>You can manage your personal information by clicking your username in the top navigation bar.</p>
+
+    <h3>What You Can Do</h3>
+    <ul class="steps">
+      <li><span class="num">→</span><strong>Edit your name</strong> — Update the display name shown in the navigation.</li>
+      <li><span class="num">→</span><strong>Change your password</strong> — Enter a new password to update your login credentials.</li>
+      <li><span class="num">→</span><strong>View your cart</strong> — Quick link to your current cart.</li>
+      <li><span class="num">→</span><strong>Logout</strong> — Sign out of your account.</li>
+    </ul>
+
+    <h3>Changing Your Password</h3>
+    <ol class="steps">
+      <li><span class="num">1</span>Go to your account page by clicking your name in the navigation.</li>
+      <li><span class="num">2</span>Find the <strong>Change Password</strong> section.</li>
+      <li><span class="num">3</span>Enter your new password and confirm it.</li>
+      <li><span class="num">4</span>Click <kbd>Save Changes</kbd>.</li>
+    </ol>
+  </section>
+
+  <!-- ORDERS -->
+  <section id="orders">
+    <h2>Order History</h2>
+    <p>Order history tracking is currently being implemented. Once available, you will be able to view a full list of your past orders — including order dates, items purchased, formats, quantities, and totals — directly from your account page.</p>
+    <div class="tip"><strong>Coming soon:</strong> Full order tracking will be available in an upcoming update to the site.</div>
+  </section>
+
+  <!-- LOGOUT -->
+  <section id="logout">
+    <h2>Logging Out</h2>
+    <div class="page-label">logout.php</div>
+    <p>To log out of your account:</p>
+    <ol class="steps">
+      <li><span class="num">1</span>Click your username in the top navigation bar.</li>
+      <li><span class="num">2</span>Click <kbd>Logout</kbd>.</li>
+      <li><span class="num">3</span>You will be redirected to the homepage as a guest.</li>
+    </ol>
+    <div class="tip"><strong>Security tip:</strong> Always log out when using a shared or public computer.</div>
+  </section>
+
+  <footer>
+    <p>MKJM Bookstore — www.mkjm.ca &nbsp;·&nbsp; End User Documentation &nbsp;·&nbsp; For support, contact your site administrator.</p>
+  </footer>
+</main>
+
+</body>
+</html>

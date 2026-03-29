@@ -1,9 +1,14 @@
 <?php
+// Include the database connection file
 require_once 'includes/db.php';
+// initialize status messages to display to the user
 $error = '';
 $success = '';
 
+// Only run the logic if the form was submitted via POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+// Sanitize and collect input
     $username = trim($_POST['username'] ?? '');
     $email    = trim($_POST['email']    ?? '');
     $password = $_POST['password']         ?? '';
@@ -12,6 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($username === '' || $email === '' || $password === '' || $confirm === '') {
         $error = 'Please fill in all fields.';
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        // Built-in PHP filter to ensure the email format is actually valid
         $error = 'Please enter a valid email address.';
     } elseif (strlen($password) < 6) {
         $error = 'Password must be at least 6 characters.';
@@ -24,7 +30,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($stmt->fetch()) {
             $error = 'Username or email is already taken.';
         } else {
+            // Hash the password using BCRYPT
             $hash = password_hash($password, PASSWORD_BCRYPT);
+            // Insert the new user into the database
             $stmt = $pdo->prepare("INSERT INTO users (username, email, password_hash, role) VALUES (:username, :email, :hash, 'user')");
             $stmt->execute(['username' => $username, 'email' => $email, 'hash' => $hash]);
 
@@ -35,12 +43,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'email'    => $email,
                 'role'     => 'user'
             ];
+            // Redirect to home page and stop further script execution
             header('Location: index.php');
             exit();
         }
     }
 }
-
+// Include the site header/navigation
 include 'includes/header.php';
 ?>
 <div class="login-page">
