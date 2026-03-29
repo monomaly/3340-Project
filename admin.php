@@ -1,7 +1,6 @@
 <?php
 require_once 'includes/db.php';
 
-
 // Auth check BEFORE any HTML output
 if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
     header('Location: login.php');
@@ -62,6 +61,27 @@ include 'includes/header.php';
         </div>
     </div>
 
+    <!-- Admin Guide Videos -->
+    <div class="admin-guides">
+        <h3>Admin Guide</h3>
+        <div class="guide-grid">
+            <div class="guide-card">
+                <h4>Guide 1 — Managing Books & Users</h4>
+                <video controls width="100%">
+                    <source src="videos/admin-guide1.webm" type="video/webm">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="guide-card">
+                <h4>Guide 2 — Managing Orders & monitoring</h4>
+                <video controls width="100%">
+                    <source src="videos/admin-guide2.webm" type="video/webm">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </div>
+
     <!-- Recent Books -->
     <div class="admin-recent">
         <h3>Recently Added Books</h3>
@@ -105,5 +125,29 @@ include 'includes/header.php';
     </div>
 
 </div>
+
+<style>
+.admin-guides { margin-bottom: 40px; }
+.admin-guides h3 { margin-bottom: 16px; }
+.guide-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 24px;
+}
+.guide-card {
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 16px;
+}
+.guide-card h4 {
+    margin: 0 0 12px;
+    font-size: 15px;
+    color: #333;
+}
+.guide-card video {
+    border-radius: 6px;
+}
+</style>
 
 <?php include 'includes/footer.php'; ?>
