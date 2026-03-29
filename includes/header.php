@@ -3,15 +3,10 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// Get current template
 $current_template = 'default';
-
-// Map templates to CSS files
 $template_css = [
     'default' => 'style.css'
 ];
-
-// Use default if template not found
 $css_file = $template_css[$current_template] ?? 'style.css';
 ?>
 
@@ -21,9 +16,6 @@ $css_file = $template_css[$current_template] ?? 'style.css';
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>MKJM Bookstore</title>
-
-        <link rel="stylesheet" href="/style.css">
-
         <link rel="stylesheet" href="/<?php echo $css_file; ?>">
     </head>
     <body>
@@ -77,7 +69,6 @@ $css_file = $template_css[$current_template] ?? 'style.css';
                 <div class="dropdown-content">
                     <?php if (isset($_SESSION['user'])): ?>
                         <a href="/account.php">Profile</a>
-                        <a href="/orders.php">Orders</a>
                         <a href="/logout.php">Logout</a>
                     <?php else: ?>
                         <a href="/login.php">Login</a>
@@ -91,13 +82,13 @@ $css_file = $template_css[$current_template] ?? 'style.css';
     <script>
     document.addEventListener('DOMContentLoaded', function() {
         const searchInput = document.querySelector('input[name="search"]');
-
-        // Enter key handler for better UX
-        searchInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                this.form.submit();
-            }
-        });
+        if (searchInput) {
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    this.form.submit();
+                }
+            });
+        }
     });
     </script>
 
