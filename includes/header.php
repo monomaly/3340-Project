@@ -2,6 +2,17 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+
+// Get current template
+$current_template = 'default';
+
+// Map templates to CSS files
+$template_css = [
+    'default' => 'style.css'
+];
+
+// Use default if template not found
+$css_file = $template_css[$current_template] ?? 'style.css';
 ?>
 
 <!DOCTYPE html>
@@ -19,44 +30,56 @@ if (session_status() === PHP_SESSION_NONE) {
     <!-- Navigation -->
     <div class="navbar">
         <div class="nav-left">
-            <form action="books.php" method="GET">
+            <form action="search.php" method="GET">
                 <input type="text" name="search" placeholder="Search books...">
                 <button type="submit">Search</button>
             </form>
         </div>
         <div class="nav-right">
-            <a href="/WWW/index.php">Home</a>
+            <a href="/index.php">Home</a>
             <!-- Wiki pages -->
             <div class="dropdown">
                 <button class="dropbtn">Wiki</button>
                 <div class="dropdown-content">
-                    <a href="/WWW/WikiPages/readguide.php">Read Guide</a>
-                    <a href="/WWW/WikiPages/authors.php">Famous Authors</a>
-                    <a href="/WWW/WikiPages/genres.php">Genres</a>
-                    <a href="/WWW/WikiPages/bookrec.php">Book Recommendations</a>
-                    <a href="/WWW/WikiPages/booktomovie.php">Book-to-Movie Adaptations</a>
+                    <a href="/WikiPages/readguide.php">Read Guide</a>
+                    <a href="/WikiPages/authors.php">Famous Authors</a>
+                    <a href="/WikiPages/genres.php">Genres</a>
+                    <a href="/WikiPages/bookrec.php">Book Recommendations</a>
+                    <a href="/WikiPages/booktomovie.php">Book-to-Movie Adaptations</a>
                 </div>
             </div>
-            <a href="/WWW/cart.php">Cart</a>
+            <a href="/cart.php">
+                Cart
+                <?php
+                $cart_count = 0;
+                if (isset($_SESSION['user']) && isset($pdo)) {
+                    $count_stmt = $pdo->prepare("SELECT SUM(quantity) FROM cart WHERE user_id = ?");
+                    $count_stmt->execute([$_SESSION['user']['id']]);
+                    $cart_count = $count_stmt->fetchColumn() ?: 0;
+                }
+                ?>
+                <?php if ($cart_count > 0): ?>
+                    <span class="cart-badge"><?php echo $cart_count; ?></span>
+                <?php endif; ?>
+            </a>
             <div class="dropdown">
                 <button class="dropbtn">
-                    <?php 
+                    <?php
                     if (isset($_SESSION['user'])) {
-                        echo $_SESSION['user']['name']; 
+                        echo htmlspecialchars($_SESSION['user']['username'] ?? $_SESSION['user']['name'] ?? 'Account');
                     } else {
                         echo "Account";
                     }
                     ?>
                 </button>
-
                 <div class="dropdown-content">
                     <?php if (isset($_SESSION['user'])): ?>
-                        <a href="/WWW/account.php">Profile</a>
-                        <a href="/WWW/orders.php">Orders</a>
-                        <a href="/WWW/logout.php">Logout</a>
+                        <a href="/account.php">Profile</a>
+                        <a href="/orders.php">Orders</a>
+                        <a href="/logout.php">Logout</a>
                     <?php else: ?>
-                        <a href="/WWW/login.php">Login</a>
-                        <a href="/WWW/signup.php">Sign Up</a>
+                        <a href="/login.php">Login</a>
+                        <a href="/signup.php">Sign Up</a>
                     <?php endif; ?>
                 </div>
             </div>
@@ -66,4 +89,3 @@ if (session_status() === PHP_SESSION_NONE) {
     <div class="header-box">
         <h1>The MKJM Bookstore</h1>
     </div>
-</html>

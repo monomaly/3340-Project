@@ -1,55 +1,59 @@
 <?php
-session_start();
+require_once 'includes/db.php';
 
-// FAKE LOGIN (for testing)
 if (!isset($_SESSION['user'])) {
-    $_SESSION['user'] = [
-        'name' => 'Maria',
-        'email' => 'maria@example.com'
-    ];
+    header('Location: login.php');
+    exit();
 }
-$user = $_SESSION['user'];
+
+$message = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (!empty($_POST['name'])) {
-        $_SESSION['user']['name'] = $_POST['name'];
+    if (!empty($_POST['username'])) {
+        $_SESSION['user']['username'] = $_POST['username'];
     }
-
     if (!empty($_POST['email'])) {
         $_SESSION['user']['email'] = $_POST['email'];
     }
-
-    header("Location: account.php");
+    header('Location: account.php');
     exit();
 }
+
+$user = $_SESSION['user'];
+
+include 'includes/header.php';
 ?>
 
-<?php include 'includes/header.php';?>
-
 <div class="account-container">
+    <?php if ($message): ?>
+        <div class="account-message" style="background: #d4edda; color: #155724; padding: 10px; border-radius: 4px; margin-bottom: 20px;">
+            <?php echo $message; ?>
+        </div>
+    <?php endif; ?>
+
     <div class="account-section">
         <h2>My Profile</h2>
-        <p><strong>Name: </strong><?php echo htmlspecialchars($user['name']??'N/A')?></p>
-        <p><strong>Email: </strong><?php echo htmlspecialchars($user['email']??'N/A')?></p>
+        <p><strong>Username: </strong><?php echo htmlspecialchars($user['username'] ?? 'N/A'); ?></p>
+        <p><strong>Email: </strong><?php echo htmlspecialchars($user['email'] ?? 'N/A'); ?></p>
+        <p><strong>Role: </strong><?php echo htmlspecialchars($user['role'] ?? 'user'); ?></p>
     </div>
 
     <div class="account-section">
         <h2>Edit Profile</h2>
-        <form method = "POST">
-            <input type="text" name="name" placeholder="Enter new name">
+        <form method="POST">
+            <input type="text" name="username" placeholder="Enter new username">
             <input type="email" name="email" placeholder="Enter new email">
             <button type="submit">Update Profile</button>
         </form>
     </div>
 
     <div class="account-section">
-        <h2>Order History</h2>
-    </div>
-
-    <div class="account-section">
         <h2>Account Actions</h2>
-        <a href="/WWW/cart.php" class="account-btn">View Cart</a>
-        <a href="/WWW/logout.php" class="account-btn logout">Logout</a>
+        <?php if ($user['role'] === 'admin'): ?>
+            <a href="admin.php" class="account-btn">Admin Dashboard</a>
+        <?php endif; ?>
+        <a href="cart.php" class="account-btn">View Cart</a>
+        <a href="logout.php" class="account-btn logout">Logout</a>
     </div>
 </div>
 
