@@ -21,6 +21,6 @@ IOS Requirement:
 [x] - document the schema and web layout
 [ ] - add a help page for each main page with their corresponfing link on it
 [x] - make the site responsive for ios
-[x] - add user guides in admin portal for removing and adding items (videos)
+[ ] - add user guides in admin portal for removing and adding items (videos)
 [ ] - add some fonts 
-[ ] - seo optimization
+[x] - seo optimization

@@ -2,26 +2,26 @@
 require_once 'includes/db.php';
 include 'includes/header.php';
 
-// Fake admin login for testing
+//fake admin login for testing
 $_SESSION['user'] = [
     'id'       => 1,
     'username' => 'Admin',
     'role'     => 'admin'
 ];
 
-// Redirect if not admin
+// redirect if not admin
 if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
     header('Location: login.php');
     exit();
 }
 
-// Initialize status array
+// initialize status array
 $status = [
     'overall' => 'unknown',
     'services' => []
 ];
 
-// ── CHECK DATABASE CONNECTION ──────────────────────────────────
+//check database connection
 function checkDatabase() {
     global $pdo;
     try {
@@ -32,7 +32,7 @@ function checkDatabase() {
     }
 }
 
-// ── CHECK DATABASE TABLES ──────────────────────────────────────
+//check database table
 function checkDatabaseTables() {
     global $pdo;
     $tables = ['books', 'users', 'cart'];
@@ -56,7 +56,7 @@ function checkDatabaseTables() {
     }
 }
 
-// ── CHECK FILE SYSTEM ACCESS ───────────────────────────────────
+//check file system access
 function checkFileSystem() {
     $paths = [
         'includes/',
@@ -87,7 +87,7 @@ function checkFileSystem() {
     }
 }
 
-// ── CHECK KEY PAGES ────────────────────────────────────────────
+//check key pages
 function checkKeyPages() {
     $pages = [
         'index.php' => 'Home Page',
@@ -110,7 +110,7 @@ function checkKeyPages() {
     }
 }
 
-// ── CHECK SESSION FUNCTIONALITY ────────────────────────────────
+//check session functionality
 function checkSessions() {
     if (session_status() === PHP_SESSION_ACTIVE) {
         return ['status' => 'online', 'message' => 'Session system working'];
@@ -119,7 +119,7 @@ function checkSessions() {
     }
 }
 
-// ── CHECK IMAGE ACCESS ─────────────────────────────────────────
+//check image access
 function checkImages() {
     $testImages = [
         'images/book_images/harry_potter.avif',
@@ -140,7 +140,7 @@ function checkImages() {
     }
 }
 
-// ── CHECK DATABASE DATA ────────────────────────────────────────
+//check database data
 function checkDatabaseData() {
     global $pdo;
     try {
